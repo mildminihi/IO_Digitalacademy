@@ -1,0 +1,6 @@
+framework module Pods_DashboardPototype {
+  umbrella header "Pods-DashboardPototype-umbrella.h"
+
+  export *
+  module * { export * }
+}

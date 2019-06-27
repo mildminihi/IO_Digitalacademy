@@ -1,0 +1,20 @@
+PODS:
+  - Alamofire (5.0.0-beta.6)
+  - PieCharts (0.0.7)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0.0-beta.5)
+  - PieCharts
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - PieCharts
+
+SPEC CHECKSUMS:
+  Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
+  PieCharts: 30e50dfa7dc19e5b84e9878d32089673ef5d0453
+
+PODFILE CHECKSUM: 36b5c922fb00f36ccf323cef81d16f14437a5b61
+
+COCOAPODS: 1.7.1
