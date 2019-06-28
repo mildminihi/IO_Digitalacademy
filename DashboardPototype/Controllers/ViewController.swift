@@ -35,7 +35,6 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.barStyle = .black
     }
     
-    
     @IBAction func clickHistory(_ sender: Any) {
         
         UserServices().self.getUserProfileService { (dataArray) in
