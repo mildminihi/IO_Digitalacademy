@@ -34,17 +34,6 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.barStyle = .black
     }
-    
-<<<<<<< HEAD
-    @IBAction func clickHistory(_ sender: Any) {
-        
-        UserServices().self.getUserProfileService { (dataArray) in
-//            print("🍒🍒\(dataArray)")
-//            self.labelName.text = "\(dataArray[0].firstNameEN) \(dataArray[0].lastNameEN)"
-//            self.labelEmail.text = dataArray[0].email
-            
-        }
-=======
     @IBAction func clickLogout(sender: AnyObject) {
         let alert = UIAlertController(title: "Are you sure you want to logout?", message: nil, preferredStyle: .alert)
         
@@ -69,7 +58,6 @@ class ViewController: UIViewController {
         //            self.labelEmail.text = dataArray[0].email
         
         //        }
->>>>>>> develop
         
     }
     
