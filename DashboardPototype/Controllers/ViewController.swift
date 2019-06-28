@@ -38,12 +38,12 @@ class ViewController: UIViewController {
     
     @IBAction func clickHistory(_ sender: Any) {
         
-        UserServices().self.getUserProfileService { (dataArray) in
-            print("🍒🍒\(dataArray)")
-            self.labelName.text = "\(dataArray[0].firstNameEN) \(dataArray[0].lastNameEN)"
-            self.labelEmail.text = dataArray[0].email
-            
-        }
+//        UserServices().self.getUserProfileService { (dataArray) in
+//            print("🍒🍒\(dataArray)")
+//            self.labelName.text = "\(dataArray[0].firstNameEN) \(dataArray[0].lastNameEN)"
+//            self.labelEmail.text = dataArray[0].email
+        
+//        }
         
     }
     
