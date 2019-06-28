@@ -12,6 +12,7 @@ import UIKit
 class ScoreHistoryViewController: UIViewController {
     
     @IBOutlet weak var mTableView: UITableView!
+
     
     var mDataArray: [[String:String]] = []
 
@@ -19,7 +20,7 @@ class ScoreHistoryViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.query()
+    //   self.query()
         
     }
     
@@ -28,8 +29,28 @@ class ScoreHistoryViewController: UIViewController {
             self.mDataArray.removeAll()
         }
       //  self.mDataArray = DatabaseManagement.instance.query()
-        self.mTableView.reloadData()
+//        self.mTableView.reloadData()
     }
 
   
+}
+
+extension ScoreHistoryViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "score") as! ScoreHistoryTableViewCell
+        cell.labelScore.text = "robot framework-01      12/20          08-12-2019"
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Title")
+        return cell!
+    }
+    
+    
 }

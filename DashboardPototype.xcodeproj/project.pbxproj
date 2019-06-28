@@ -25,6 +25,7 @@
 		7AEBAEFD22C1B2DD006309CB /* ExamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEBAEFC22C1B2DD006309CB /* ExamCollectionViewCell.swift */; };
 		7AEBAEFF22C1BA02006309CB /* ExamRecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEBAEFE22C1BA02006309CB /* ExamRecommendCollectionViewCell.swift */; };
 		F9953F6A22C5BA8000BB93AA /* ScoreHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9953F6922C5BA8000BB93AA /* ScoreHistoryViewController.swift */; };
+		F9CD9E9022C5C37C000F47AD /* ScoreHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CD9E8F22C5C37C000F47AD /* ScoreHistoryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		7AEBAEFC22C1B2DD006309CB /* ExamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCollectionViewCell.swift; sourceTree = "<group>"; };
 		7AEBAEFE22C1BA02006309CB /* ExamRecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamRecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		F9953F6922C5BA8000BB93AA /* ScoreHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreHistoryViewController.swift; sourceTree = "<group>"; };
+		F9CD9E8F22C5C37C000F47AD /* ScoreHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreHistoryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			children = (
 				7AEBAEFC22C1B2DD006309CB /* ExamCollectionViewCell.swift */,
 				7AEBAEFE22C1BA02006309CB /* ExamRecommendCollectionViewCell.swift */,
+				F9CD9E8F22C5C37C000F47AD /* ScoreHistoryTableViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9953F6A22C5BA8000BB93AA /* ScoreHistoryViewController.swift in Sources */,
+				F9CD9E9022C5C37C000F47AD /* ScoreHistoryTableViewCell.swift in Sources */,
 				7AEBAEFF22C1BA02006309CB /* ExamRecommendCollectionViewCell.swift in Sources */,
 				13D48D6F22C5B4FB00EBA40B /* Extensions.swift in Sources */,
 				7A05E80F22C3BBBE00DB3E70 /* UserServices.swift in Sources */,
