@@ -4,7 +4,7 @@ import Alamofire
 
 class ExamLoginViewController: UIViewController{
     
-    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
@@ -19,7 +19,7 @@ class ExamLoginViewController: UIViewController{
         
         UIView.animate(withDuration: 0.5, delay: 0.2, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.5, options: [.curveEaseOut], animations: {
             //email
-            self.emailField.center.x += self.view.bounds.width
+            self.usernameField.center.x += self.view.bounds.width
         }, completion: nil)
         
         UIView.animate(withDuration: 0.5, delay: 0.4, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.5, options: [.curveEaseOut], animations: {
@@ -34,7 +34,7 @@ class ExamLoginViewController: UIViewController{
     
     func displayAnimate(){
         //setting slide animation
-        self.emailField.center.x -= self.view.bounds.width
+        self.usernameField.center.x -= self.view.bounds.width
         self.passwordField.center.x -= self.view.bounds.width
         self.loginButton.center.x -= self.view.bounds.width
         

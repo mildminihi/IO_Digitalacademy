@@ -40,7 +40,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7kW-Fp-P9v">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7kW-Fp-P9v">
                                 <rect key="frame" x="44" y="435" width="287" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -86,9 +86,9 @@
                         <viewLayoutGuide key="safeArea" id="9FX-w4-vsL"/>
                     </view>
                     <connections>
-                        <outlet property="emailField" destination="7kW-Fp-P9v" id="aph-bg-FvY"/>
                         <outlet property="loginButton" destination="Qwr-rb-oUN" id="qUJ-l4-Que"/>
                         <outlet property="passwordField" destination="8Rq-BD-q4A" id="GWm-Bp-ehe"/>
+                        <outlet property="usernameField" destination="7kW-Fp-P9v" id="34y-OX-HIY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wkN-qi-BDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
