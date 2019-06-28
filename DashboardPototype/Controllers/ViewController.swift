@@ -48,16 +48,6 @@ class ViewController: UIViewController {
     }
     
 }
-extension UIView{
-    func dropShadow() {
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.2
-        self.layer.shadowOffset = CGSize(width: -0.15, height: 0.15)
-        self.layer.shadowRadius = 2
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-    }
-}
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
