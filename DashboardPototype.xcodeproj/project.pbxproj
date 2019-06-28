@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13D48D6922C5B28500EBA40B /* ExamLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D48D6822C5B28500EBA40B /* ExamLoginViewController.swift */; };
+		13D48D6B22C5B41000EBA40B /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13D48D6A22C5B41000EBA40B /* LoginStoryboard.storyboard */; };
+		13D48D6D22C5B45300EBA40B /* icon_scb.png in Resources */ = {isa = PBXBuildFile; fileRef = 13D48D6C22C5B45300EBA40B /* icon_scb.png */; };
+		13D48D6F22C5B4FB00EBA40B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D48D6E22C5B4FB00EBA40B /* Extensions.swift */; };
+		13D48D7122C5B95500EBA40B /* 1152-blue-waves.json in Resources */ = {isa = PBXBuildFile; fileRef = 13D48D7022C5B95500EBA40B /* 1152-blue-waves.json */; };
 		583E4437DE9DFDC4D1EAC5D8 /* Pods_DashboardPototype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F96011EE34F3688DF5B4D09 /* Pods_DashboardPototype.framework */; };
 		7A052A1222C44F2200F396B2 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A052A1122C44F2200F396B2 /* UserResponse.swift */; };
 		7A052A3222C49BB200F396B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A052A3122C49BB200F396B2 /* Assets.xcassets */; };
@@ -24,6 +29,11 @@
 
 /* Begin PBXFileReference section */
 		02A4B8EC2D7CA8B56F00ABA7 /* Pods-DashboardPototype.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DashboardPototype.release.xcconfig"; path = "Target Support Files/Pods-DashboardPototype/Pods-DashboardPototype.release.xcconfig"; sourceTree = "<group>"; };
+		13D48D6822C5B28500EBA40B /* ExamLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamLoginViewController.swift; sourceTree = "<group>"; };
+		13D48D6A22C5B41000EBA40B /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
+		13D48D6C22C5B45300EBA40B /* icon_scb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_scb.png; sourceTree = "<group>"; };
+		13D48D6E22C5B4FB00EBA40B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		13D48D7022C5B95500EBA40B /* 1152-blue-waves.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "1152-blue-waves.json"; sourceTree = "<group>"; };
 		3F96011EE34F3688DF5B4D09 /* Pods_DashboardPototype.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DashboardPototype.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		743F202ACD5928DC8C10B9A7 /* Pods-DashboardPototype.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DashboardPototype.debug.xcconfig"; path = "Target Support Files/Pods-DashboardPototype/Pods-DashboardPototype.debug.xcconfig"; sourceTree = "<group>"; };
 		7A052A1122C44F2200F396B2 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
@@ -75,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				7A0A223C22C35F9600BABC9C /* ExamDetailViewController.swift */,
+				13D48D6822C5B28500EBA40B /* ExamLoginViewController.swift */,
 				7A0A223B22C35F5200BABC9C /* CollectionViewCells */,
 			);
 			path = Views;
@@ -100,6 +111,8 @@
 		7A0A21B422C2FAF000BABC9C /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				13D48D7022C5B95500EBA40B /* 1152-blue-waves.json */,
+				13D48D6C22C5B45300EBA40B /* icon_scb.png */,
 				7A0A21B522C2FB3000BABC9C /* Kanit */,
 			);
 			path = Assets;
@@ -145,6 +158,8 @@
 				7A76181E22C10D910078FE38 /* Main.storyboard */,
 				7A76182322C10D920078FE38 /* LaunchScreen.storyboard */,
 				7A76182622C10D920078FE38 /* Info.plist */,
+				13D48D6A22C5B41000EBA40B /* LoginStoryboard.storyboard */,
+				13D48D6E22C5B4FB00EBA40B /* Extensions.swift */,
 			);
 			path = DashboardPototype;
 			sourceTree = "<group>";
@@ -218,7 +233,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A0A21B622C2FB3000BABC9C /* Kanit in Resources */,
+				13D48D6D22C5B45300EBA40B /* icon_scb.png in Resources */,
+				13D48D6B22C5B41000EBA40B /* LoginStoryboard.storyboard in Resources */,
 				7A76182522C10D920078FE38 /* LaunchScreen.storyboard in Resources */,
+				13D48D7122C5B95500EBA40B /* 1152-blue-waves.json in Resources */,
 				7A052A3222C49BB200F396B2 /* Assets.xcassets in Resources */,
 				7A76182022C10D910078FE38 /* Main.storyboard in Resources */,
 			);
@@ -275,8 +293,10 @@
 			files = (
 				F9953F6A22C5BA8000BB93AA /* ScoreHistoryViewController.swift in Sources */,
 				7AEBAEFF22C1BA02006309CB /* ExamRecommendCollectionViewCell.swift in Sources */,
+				13D48D6F22C5B4FB00EBA40B /* Extensions.swift in Sources */,
 				7A05E80F22C3BBBE00DB3E70 /* UserServices.swift in Sources */,
 				7A76181D22C10D910078FE38 /* ViewController.swift in Sources */,
+				13D48D6922C5B28500EBA40B /* ExamLoginViewController.swift in Sources */,
 				7AEBAEFD22C1B2DD006309CB /* ExamCollectionViewCell.swift in Sources */,
 				7A052A1222C44F2200F396B2 /* UserResponse.swift in Sources */,
 				7A76181B22C10D910078FE38 /* AppDelegate.swift in Sources */,
