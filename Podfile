@@ -8,5 +8,6 @@ target 'DashboardPototype' do
   # Pods for DashboardPototype
 pod 'PieCharts'
 pod 'Alamofire', '~> 5.0.0-beta.5'
+pod 'lottie-ios'
 
 end

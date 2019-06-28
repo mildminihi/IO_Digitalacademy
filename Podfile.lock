@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (5.0.0-beta.6)
+  - lottie-ios (3.1.0)
   - PieCharts (0.0.7)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-beta.5)
+  - lottie-ios
   - PieCharts
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - lottie-ios
     - PieCharts
 
 SPEC CHECKSUMS:
   Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
+  lottie-ios: 9467723922dfff46f6d4e3019c32594a62440b7c
   PieCharts: 30e50dfa7dc19e5b84e9878d32089673ef5d0453
 
-PODFILE CHECKSUM: 36b5c922fb00f36ccf323cef81d16f14437a5b61
+PODFILE CHECKSUM: 844be9e2216ab92d34c38671a58e62bd08cab55c
 
-COCOAPODS: 1.7.1
+COCOAPODS: 1.7.2
