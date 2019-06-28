@@ -15,6 +15,7 @@ class ScoreHistoryViewController: UIViewController {
 
     
     var mDataArray: [[String:String]] = []
+    var mScoreArray = ["robot framework-01      12/20          08-12-2019", "Core-Android                 18/20          10-12-2019", "Advanced-Android        20/20          12-12-2019"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +43,8 @@ extension ScoreHistoryViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "score") as! ScoreHistoryTableViewCell
-        cell.labelScore.text = "robot framework-01      12/20          08-12-2019"
+        cell.labelScore.text = mScoreArray[indexPath.row]
+        
         return cell
     }
     
@@ -53,7 +55,7 @@ extension ScoreHistoryViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 45
     }
     
     
