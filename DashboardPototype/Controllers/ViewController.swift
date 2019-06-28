@@ -35,6 +35,7 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.barStyle = .black
     }
     
+<<<<<<< HEAD
     @IBAction func clickHistory(_ sender: Any) {
         
         UserServices().self.getUserProfileService { (dataArray) in
@@ -43,6 +44,32 @@ class ViewController: UIViewController {
 //            self.labelEmail.text = dataArray[0].email
             
         }
+=======
+    @IBAction func clickLogout(sender: AnyObject) {
+        let alert = UIAlertController(title: "Are you sure you want to logout?", message: nil, preferredStyle: .alert)
+        
+        // add the actions (buttons)
+        alert.addAction(UIAlertAction(title: "Log out", style: .destructive, handler: { action in
+            
+            let storyboard = UIStoryboard(name: "LoginStoryboard", bundle: nil).instantiateViewController(withIdentifier: "ExamLogin")
+            self.present(storyboard, animated: true, completion: nil)
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func clickHistory(_ sender: Any) {
+        
+        //        UserServices().self.getUserProfileService { (dataArray) in
+        //            print("🍒🍒\(dataArray)")
+        //            self.labelName.text = "\(dataArray[0].firstNameEN) \(dataArray[0].lastNameEN)"
+        //            self.labelEmail.text = dataArray[0].email
+        
+        //        }
+>>>>>>> develop
         
     }
     
