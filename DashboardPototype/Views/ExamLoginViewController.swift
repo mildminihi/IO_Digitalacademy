@@ -11,16 +11,28 @@ class ExamLoginViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.displayAnimate()
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
+        self.usernameField.center.x -= self.view.bounds.width
+        self.passwordField.center.x -= self.view.bounds.width
+        self.loginButton.center.x -= self.view.bounds.width
+        
     }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.usernameField.center.x -= self.view.bounds.width
+        self.passwordField.center.x -= self.view.bounds.width
+        self.loginButton.center.x -= self.view.bounds.width
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
+        
+        self.displayAnimate()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         super.viewDidAppear(animated)
         
         UIView.animate(withDuration: 0.5, delay: 0.2, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.5, options: [.curveEaseOut], animations: {
@@ -40,9 +52,6 @@ class ExamLoginViewController: UIViewController{
     
     func displayAnimate(){
         //setting slide animation
-        self.usernameField.center.x -= self.view.bounds.width
-        self.passwordField.center.x -= self.view.bounds.width
-        self.loginButton.center.x -= self.view.bounds.width
         
         //setting blue wave
         let animationWave = Animation.named("1152-blue-waves")

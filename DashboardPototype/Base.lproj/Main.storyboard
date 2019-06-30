@@ -310,14 +310,6 @@
             </objects>
             <point key="canvasLocation" x="1079.2" y="126.35467980295567"/>
         </scene>
-        <!--LoginStoryboard-->
-        <scene sceneID="cRj-aV-4Un">
-            <objects>
-                <viewControllerPlaceholder storyboardName="LoginStoryboard" id="cWi-Qf-vYG" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wBY-zB-T84" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1677" y="-239"/>
-        </scene>
         <!--Exam Detail View Controller-->
         <scene sceneID="ohv-Xj-t9I">
             <objects>
