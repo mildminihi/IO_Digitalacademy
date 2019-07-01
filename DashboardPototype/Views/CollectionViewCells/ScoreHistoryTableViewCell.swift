@@ -11,7 +11,9 @@ import UIKit
 class ScoreHistoryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var labelTitle: UILabel!
+    @IBOutlet weak var labelExamTitle: UILabel!
     @IBOutlet weak var labelScore: UILabel!
+    @IBOutlet weak var labelDate: UILabel!
     
     
 
