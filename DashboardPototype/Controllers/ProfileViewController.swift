@@ -157,9 +157,9 @@ class ProfileViewController: UIViewController {
             
             
             // 2 second
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-                self.mRefresh.endRefreshing()
-            }
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+//                self.mRefresh.endRefreshing()
+//            }
         }
     }
     
@@ -180,11 +180,19 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
         if indexPath.item > 0 {
             let keyName: String! = self.mKeyOrder[indexPath.item + 3][0]
             let bueatyKey: String! = self.mKeyOrder[indexPath.item + 3][1]
+            
             cell = tableView.dequeueReusableCell(withIdentifier: "custom") as! ProfileTableViewCell
             //        let item = self.mDataArray[indexPath.row]
             //        cell.mFlightLabel.text = item[Database.Fields.fieldData]
             cell.mKey.text = bueatyKey
-            cell.mValue.text = self.mDataArray[keyName] as? String
+            
+            
+            if let profile_value = self.mDataArray[keyName as String] as? String {
+                cell.mValue.text = profile_value
+            } else {
+                cell.mValue.text = "N/A"
+            }
+            
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "name section") as! ProfileTableViewCell
             //            cell.mFirstnameThVal.text = mDataDict["firstName_TH"] as? String
@@ -206,15 +214,15 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
     //        return cell!
     //    }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        //        if editingStyle == .delete{
-        //            let item = mDataArray[indexPath.row]
-        //            let rowID = item[Database.Fields.row]
-        //            if DatabaseManagement.instance.delete(rowID: rowID!){
-        //                self.query()
-        //            }else{
-        //                print("Delete failure")
-        //            }
-    }
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        //        if editingStyle == .delete{
+//        //            let item = mDataArray[indexPath.row]
+//        //            let rowID = item[Database.Fields.row]
+//        //            if DatabaseManagement.instance.delete(rowID: rowID!){
+//        //                self.query()
+//        //            }else{
+//        //                print("Delete failure")
+//        //            }
+//    }
 }
 
