@@ -7,12 +7,12 @@ import Foundation
 
 // MARK: - UserResponse
 struct UserResponse: Codable {
-    let status: Status
-    let data: DataClass
+    let status: UserStatus
+    let data: UserDataClass
 }
 
 // MARK: - DataClass
-struct DataClass: Codable {
+struct UserDataClass: Codable {
     let id: Int
     let lastNameTH, firstNameTH, address, position: String
     let profilePhotoPath, birthDate, registerDate, mobileNo: String
@@ -36,6 +36,6 @@ struct DataClass: Codable {
 }
 
 // MARK: - Status
-struct Status: Codable {
+struct UserStatus: Codable {
     let code, message: String
 }

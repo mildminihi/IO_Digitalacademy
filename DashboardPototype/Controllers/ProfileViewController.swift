@@ -9,11 +9,17 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var mTableView: UITableView!
     @IBOutlet weak var mPreviewImageview: UIImageView!
     
-    var mDataArray: [String:Any] = [:]
+    var mDataArray : [String:Any] = [:]
     //    var mDataArray: DataClass = DataClass()
     
+//            let url = "http://192.168.110.91:9091/api/user/profileInfo"
+    let mUrl = "http://localhost:9000/api/user/profileInfo"
+
+    
     var mRefresh: UIRefreshControl = UIRefreshControl()
-    let headers: HTTPHeaders = ["token": "1234"]
+    let headers: HTTPHeaders = ["Access-Token": "1234"]
+    
+    
     
     
     //    let mDataDict: [String:String] = ["first_nameEng": "Ruchapol",
@@ -27,22 +33,22 @@ class ProfileViewController: UIViewController {
     //                                       "religionEng": "Buddhist",
     //                                       "addressEng": "Some where on earth"]
     
-    let mDataDict: [String:Any] = ["id": 2,
-                                   "lastName_TH": "นันธิ",
-                                   "firstName_TH": "ณัฐดนัย",
-                                   "address": "5555555555 ",
-                                   "position": "software engineer",
-                                   "profilePhotoPath": "lnwza007.com",
-                                   "birth_date": "1996-07-08",
-                                   "registerDate": "2019-06-26T08:30:00.000+0000",
-                                   "mobileNo": "0870760710",
-                                   "email_notification_flag": "2",
-                                   "lastName_EN": "Nunti",
-                                   "firstName_EN": "Natdanai",
-                                   "nationality": "ไทย",
-                                   "religion": "ไทย",
-                                   "email": "natdanai.nunti@gmail.com",
-                                   "userId": 89614]
+//    let mDataDict: [String:Any] = ["id": 2,
+//                                   "lastName_TH": "นันธิ",
+//                                   "firstName_TH": "ณัฐดนัย",
+//                                   "address": "5555555555 ",
+//                                   "position": "software engineer",
+//                                   "profilePhotoPath": "lnwza007.com",
+//                                   "birth_date": "1996-07-08",
+//                                   "registerDate": "2019-06-26T08:30:00.000+0000",
+//                                   "mobileNo": "0870760710",
+//                                   "email_notification_flag": "2",
+//                                   "lastName_EN": "Nunti",
+//                                   "firstName_EN": "Natdanai",
+//                                   "nationality": "ไทย",
+//                                   "religion": "ไทย",
+//                                   "email": "natdanai.nunti@gmail.com",
+//                                   "userId": 89614]
     
     // [real key, Bueatyful key]
     let mKeyOrder: [[String]] = [["firstName_TH", "ชื่อ"],
@@ -55,14 +61,15 @@ class ProfileViewController: UIViewController {
                                  ["email", "E-mail"],
                                  ["nationality", "Nationality"],
                                  //                        ["raceEng"],
-        ["religion", "Religion"],
+                                 ["religion", "Religion"],
         //                        ["religionEng"],
-        ["address", "Address"]]
+                                 ["address", "Address"]]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.feedData()
+//        self.setupRefresh()
         //        self.query()
         
         //        self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -104,13 +111,16 @@ class ProfileViewController: UIViewController {
     //        self.mTableView.reloadData()
     //    }
     
+    
+    
     func setupRefresh(){
         self.mRefresh.addTarget(self, action: #selector(feedData), for: .valueChanged)
         self.mTableView.addSubview(self.mRefresh)
     }
     
     @objc func feedData(){
-        AF.request("http://192.168.110.91:9091/api/user/profileInfo", method: .get, headers: headers).responseJSON { (response) in
+        
+        AF.request(self.mUrl, method: .get, headers: self.headers).responseJSON { (response) in
             
             print("raw res:", response)
             
@@ -118,15 +128,19 @@ class ProfileViewController: UIViewController {
             case .success:
                 
                 do{
-//                    let result = try JSONDecoder().decode(ProfileResponse.self, from: response.data!)
+                    let result = try JSONDecoder().decode(ProfileResponse.self, from: response.data!)
 //                    print("res : \(result.data)")
-                    //                    self.mDataArray = response.data
-//                    print(self.mDataArray)
+                    self.mDataArray = result.data.dictionary
+                    print(self.mDataArray)
+//                    print(self.mDataArray["id"])
+//                    for key in self.mDataDict {
+//                        self.mDataDict[key] = result.data.dictionary[key]
+//                    }
                     //                    print("res data:", self.mDataArray as Any)
                     
                     
                     // important
-                    //                    self.mTableView.reloadData()
+                    self.mTableView.reloadData()
                     //
                 } catch {
                     print("error some \(error)")
@@ -154,7 +168,7 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //        return self.mDataArray.count
-        return mKeyOrder.count - 3
+        return self.mKeyOrder.count - 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -164,19 +178,19 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
         print("IndexPath: ", indexPath, " int: ", indexPath.item)
         
         if indexPath.item > 0 {
-            let keyName: String! = mKeyOrder[indexPath.item + 3][0]
-            let bueatyKey: String! = mKeyOrder[indexPath.item + 3][1]
+            let keyName: String! = self.mKeyOrder[indexPath.item + 3][0]
+            let bueatyKey: String! = self.mKeyOrder[indexPath.item + 3][1]
             cell = tableView.dequeueReusableCell(withIdentifier: "custom") as! ProfileTableViewCell
             //        let item = self.mDataArray[indexPath.row]
             //        cell.mFlightLabel.text = item[Database.Fields.fieldData]
             cell.mKey.text = bueatyKey
-            cell.mValue.text = mDataDict[keyName] as? String
+            cell.mValue.text = self.mDataArray[keyName] as? String
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "name section") as! ProfileTableViewCell
             //            cell.mFirstnameThVal.text = mDataDict["firstName_TH"] as? String
             //            cell.mLastnameThVal.text = mDataDict["lastName_TH"] as? String
-            cell.mFirstnameEngVal.text = mDataDict["firstName_EN"] as? String
-            cell.mLastnameEngVal.text = mDataDict["lastName_EN"] as? String
+            cell.mFirstnameEngVal.text = self.mDataArray["firstName_EN"] as? String
+            cell.mLastnameEngVal.text = self.mDataArray["lastName_EN"] as? String
         }
         return cell
     }
