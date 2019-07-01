@@ -40,8 +40,9 @@ class ViewController: UIViewController {
         // add the actions (buttons)
         alert.addAction(UIAlertAction(title: "Log out", style: .destructive, handler: { action in
             
-            let storyboard = UIStoryboard(name: "LoginStoryboard", bundle: nil).instantiateViewController(withIdentifier: "ExamLogin")
-            self.present(storyboard, animated: true, completion: nil)
+//            let storyboard = UIStoryboard(name: "LoginStoryboard", bundle: nil).instantiateViewController(withIdentifier: "ExamLogin")
+//            self.present(storyboard, animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
             
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

@@ -10,11 +10,11 @@ import Foundation
 struct ProfileResponse: Codable {
     //    let profiles: DataClass
     let status: ProfileStatus
-    let data: DataClass
+    let data: ProfileDataClass
 }
 
 // MARK: - DataClass
-struct DataClass: Codable {
+struct ProfileDataClass: Codable {
     let id: Int
     let lastNameTH, firstNameTH, address, position: String
     let profilePhotoPath, birthDate, registerDate, mobileNo: String
