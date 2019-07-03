@@ -21,14 +21,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var kpiView: UIView!
     @IBOutlet weak var examAllCountView: UIView!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var viewAllExamButton: UIButton!
+    @IBOutlet weak var notHaveRecentLabel: UILabel!
+    @IBOutlet weak var notHaveRecomLabel: UILabel!
     
     var examArray = ["Exam1", "Exam2", "Exam3", "Exam4", "Exam5"]
     var examRecommendArray = ["ExamRe1", "ExamRe2", "ExamRe3", "ExamRe4", "ExamRe5"]
     var examImageArray = ["1", "2", "3", "4", "5"]
+    var mostDoExams: [HistoryMostDo] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUi()
+        self.fetchData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,9 +45,6 @@ class ViewController: UIViewController {
         
         // add the actions (buttons)
         alert.addAction(UIAlertAction(title: "Log out", style: .destructive, handler: { action in
-            
-//            let storyboard = UIStoryboard(name: "LoginStoryboard", bundle: nil).instantiateViewController(withIdentifier: "ExamLogin")
-//            self.present(storyboard, animated: true, completion: nil)
             self.dismiss(animated: true, completion: nil)
             
         }))
@@ -51,22 +54,52 @@ class ViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func clickHistory(_ sender: Any) {
-        
-        //        UserServices().self.getUserProfileService { (dataArray) in
-        //            print("🍒🍒\(dataArray)")
-        //            self.labelName.text = "\(dataArray[0].firstNameEN) \(dataArray[0].lastNameEN)"
-        //            self.labelEmail.text = dataArray[0].email
-        
-        //        }
-        
+    func feedUserData() {
+        UserServices().self.getUserProfileService { (dataArray) in
+//            print("🍒🍒\(dataArray)")
+            self.labelName.text = "\(dataArray[0].firstNameEN) \(dataArray[0].lastNameEN)"
+            self.labelEmail.text = dataArray[0].email
+        }
     }
     
+    func feedMostExamData() {
+        MostDoExamServices().self.getMostDoExamService { (historyMostDo) in
+//            print("🥩🥩 \(historyMostDo) 🍤🥩")
+            self.mostDoExams = historyMostDo.data.historyMostDo
+            if self.mostDoExams.count != 0{
+                self.notHaveRecomLabel.isHidden = true
+                self.notHaveRecentLabel.isHidden = true
+            }
+            else {
+                self.notHaveRecomLabel.isHidden = false
+                self.notHaveRecentLabel.isHidden = false
+            }
+            self.examCollectView.reloadData()
+            self.examRecommendCollectView.reloadData()
+        }
+    }
+    
+    func fetchData() {
+        self.activityIndicator.isHidden = false
+        let delay = 1 // seconds
+        self.activityIndicator.startAnimating()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
+            self.feedUserData()
+            self.feedMostExamData()
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+        }
+    }
+    
+    @IBAction func clickRefresh(_ sender: Any) {
+        
+        self.fetchData()
+    }
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return mostDoExams.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -86,7 +119,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             
             let indexImage = Int(arc4random_uniform(5))
             
-            cell.examReTitle.text = examRecommendArray[indexPath.row]
+            cell.examReTitle.text = mostDoExams[indexPath.row].examName
             cell.examReImage.image = UIImage(named: examImageArray[indexImage])
             cell.examReImage.image = cell.examReImage.image?.withRenderingMode(.alwaysTemplate)
             cell.examReImage.tintColor = #colorLiteral(red: 0.7704972625, green: 0.5143797994, blue: 1, alpha: 1)
@@ -105,7 +138,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         else {
             let vc = storyboard?.instantiateViewController(withIdentifier: "ExamDetailViewController") as! ExamDetailViewController
-            vc.examName = examRecommendArray[indexPath.row]
+            vc.examName = mostDoExams[indexPath.row].examName
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
