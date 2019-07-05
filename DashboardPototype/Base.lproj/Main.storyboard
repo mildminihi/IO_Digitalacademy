@@ -274,13 +274,20 @@
                                 <state key="normal" title="All exam">
                                     <color key="titleColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
-                                <connections>
-                                    <action selector="clickHistory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gjv-5h-vKt"/>
-                                </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="aql-a3-LqM">
                                 <rect key="frame" x="177.66666666666666" y="396" width="20" height="20"/>
                             </activityIndicatorView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y3x-by-ZGB">
+                                <rect key="frame" x="87" y="475" width="200" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.17314216930000001" green="0.17314216930000001" blue="0.17314216930000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f2E-tT-5ZT">
+                                <rect key="frame" x="87" y="659" width="200" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.17314216930000001" green="0.17314216930000001" blue="0.17314216930000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not Have Any Exam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AmL-fi-DL9">
                                 <rect key="frame" x="115" y="505" width="151" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -329,7 +336,9 @@
                         <outlet property="labelEmail" destination="iVy-wq-e7h" id="bSF-GO-gPN"/>
                         <outlet property="labelName" destination="Dp2-ZE-Isv" id="8fk-tK-gec"/>
                         <outlet property="notHaveRecentLabel" destination="AmL-fi-DL9" id="bGC-Y1-QZ1"/>
+                        <outlet property="notHaveRecentView" destination="y3x-by-ZGB" id="tlq-ka-zAm"/>
                         <outlet property="notHaveRecomLabel" destination="nBM-eV-dbb" id="Aut-rU-SzW"/>
+                        <outlet property="notHaveRecomView" destination="f2E-tT-5ZT" id="hvD-qA-YIP"/>
                         <outlet property="topView" destination="cmM-0p-llw" id="YcD-DG-c3w"/>
                         <outlet property="userCountView" destination="w2y-v0-W4A" id="Dab-2M-9es"/>
                         <outlet property="viewAllExamButton" destination="FdL-X6-XIK" id="KIT-xk-RM4"/>

@@ -1,21 +1,22 @@
 //
-//  MostDoExamServices.swift
+//  RecentExamServies.swift
 //  DashboardPototype
 //
-//  Created by Supanat Wanroj on 3/7/2562 BE.
+//  Created by Supanat Wanroj on 4/7/2562 BE.
 //  Copyright © 2562 Supanat Wanroj. All rights reserved.
 //
+
 
 import Foundation
 import UIKit
 import Alamofire
 
-class MostDoExamServices: UIViewController {
+class RecentExamServices: UIViewController {
     
-    func getMostDoExamService(completion: @escaping ([MostDoExamResponse]) -> Void) {
+    func getRecentExamService(completion: @escaping ([RecentExamResponse]) -> Void) {
         
-        var mostDoArray:[MostDoExamResponse] = []
-        let url = "http://localhost:9000/e-xam/api/exam/exam_most"
+        var recentExamArray:[RecentExamResponse] = []
+        let url = "http://localhost:9000/e-xam/api/exam/last_exam"
         let headers: HTTPHeaders = [
             "token" : "1234"
         ]
@@ -23,15 +24,16 @@ class MostDoExamServices: UIViewController {
             switch response.result {
             case .success:
                 do {
-                    let result = try JSONDecoder().decode(MostDoExamResponse.self, from: response.data!)
-                    mostDoArray = [result]
+                    let result = try JSONDecoder().decode(RecentExamResponse.self, from: response.data!)
+                    recentExamArray = [result]
                 }
                 catch {
+                    print("🍉")
                 }
             case .failure(let error):
                 print("Network error: \(error.localizedDescription)")
             }
-            completion(mostDoArray)
+            completion(recentExamArray)
         }
         
     }
