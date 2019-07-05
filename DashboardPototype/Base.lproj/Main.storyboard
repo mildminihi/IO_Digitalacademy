@@ -350,7 +350,7 @@
         <!--Navigation Controller-->
         <scene sceneID="cft-lP-Kig">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Iwz-TK-CV7" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="main_storyboard" automaticallyAdjustsScrollViewInsets="NO" id="Iwz-TK-CV7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eKv-z1-2i8">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
