@@ -122,7 +122,7 @@ extension ViewController {
     func feedUserData() {
         UserServices().self.getUserProfileService { (dataArray) in
             if dataArray.count == 0 {
-                self.present(UIAlertController().alertWithOneOption(title: "Cannot connect to server!", msg: nil, option: "OK"), animated: true, completion: nil)
+                self.alertWithOneOption(title: "Cannot connect to server!", msg: nil, option: "OK")
             }
             else {
                 self.labelName.text = "\(dataArray[0].firstNameEN) \(dataArray[0].lastNameEN)"
@@ -135,7 +135,7 @@ extension ViewController {
         MostDoExamServices().self.getMostDoExamService { (historyMostDo) in
             if historyMostDo.count == 0 {
                 self.isNotHaveRecommendExam(flag: true)
-                self.present(UIAlertController().alertWithOneOption(title: "Cannot get RecommandExam Info!", msg: nil, option: "OK"), animated: true, completion: nil)
+                self.alertWithOneOption(title: "Cannot get RecommandExam Info!", msg: nil, option: "OK")
             }
             else {
                 self.mostDoExamsArray = historyMostDo[0].data.historyMostDo
@@ -154,7 +154,7 @@ extension ViewController {
         RecentExamServices().self.getRecentExamService { (recentExam) in
             if recentExam.count == 0 {
                 self.isNotHaveRecentExam(flag: true)
-                self.present(UIAlertController().alertWithOneOption(title: "Cannot get RecentExam Info!", msg: nil, option: "OK"), animated: true, completion: nil)
+                self.alertWithOneOption(title: "Cannot get RecentExam Info!", msg: nil, option: "OK")
             }
             else {
                 self.recentExamArray = recentExam[0].data.lastDo
@@ -221,10 +221,12 @@ extension ViewController {
         if flag{
             self.notHaveRecomLabel.isHidden = false
             self.notHaveRecomView.isHidden = false
+            self.examRecommendCollectView.isHidden = true
         }
         else {
             self.notHaveRecomLabel.isHidden = true
             self.notHaveRecomView.isHidden = true
+            self.examRecommendCollectView.isHidden = false
         }
     }
     
@@ -232,10 +234,12 @@ extension ViewController {
         if flag{
             self.notHaveRecentLabel.isHidden = false
             self.notHaveRecentView.isHidden = false
+            self.examCollectView.isHidden = true
         }
         else {
             self.notHaveRecentLabel.isHidden = true
             self.notHaveRecentView.isHidden = true
+            self.examCollectView.isHidden = false
         }
     }
     

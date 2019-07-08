@@ -56,10 +56,10 @@ extension UIView{
     }
 }
 
-extension UIAlertController {
-    func alertWithOneOption(title: String, msg : String?, option :String) -> UIAlertController {
+extension UIViewController {
+    func alertWithOneOption(title: String, msg : String?, option :String){
         let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: option, style: .cancel, handler: nil))
-        return alert
+        self.present(alert, animated: true, completion: nil)
     }
 }
