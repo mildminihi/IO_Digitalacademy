@@ -274,23 +274,58 @@
                                 <state key="normal" title="All exam">
                                     <color key="titleColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
-                                <connections>
-                                    <action selector="clickHistory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gjv-5h-vKt"/>
-                                </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="aql-a3-LqM">
+                                <rect key="frame" x="177.66666666666666" y="396" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y3x-by-ZGB">
+                                <rect key="frame" x="87" y="475" width="200" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.17314216930000001" green="0.17314216930000001" blue="0.17314216930000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f2E-tT-5ZT">
+                                <rect key="frame" x="87" y="659" width="200" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.17314216930000001" green="0.17314216930000001" blue="0.17314216930000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not Have Any Exam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AmL-fi-DL9">
+                                <rect key="frame" x="115" y="505" width="151" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not Have Any Exam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBM-eV-dbb">
+                                <rect key="frame" x="112" y="689" width="151" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="aql-a3-LqM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sO4-f8-48P"/>
+                            <constraint firstItem="aql-a3-LqM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="wH0-CP-aqE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Dashboard" id="vZ4-8j-AT3">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="4jp-Bw-k6i">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="4jp-Bw-k6i">
                             <color key="tintColor" red="0.73333333329999995" green="0.52549019610000003" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="clickLogoutWithSender:" destination="BYZ-38-t0r" id="Bdq-OM-CWU"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Po8-Hp-VoG">
+                            <color key="tintColor" red="0.73333333329999995" green="0.52549019610000003" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="clickRefresh:" destination="BYZ-38-t0r" id="vE4-Tv-HKp"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="aql-a3-LqM" id="thO-0c-aMX"/>
                         <outlet property="examAllCountView" destination="Bry-JT-1Ah" id="pKr-BA-Nmf"/>
                         <outlet property="examCollectView" destination="Dkb-tc-1Ey" id="Djb-pK-7OU"/>
                         <outlet property="examCountView" destination="jBb-iy-Amh" id="3rz-ZK-2Zd"/>
@@ -300,6 +335,10 @@
                         <outlet property="kpiView" destination="8r8-eW-hny" id="rS9-Yg-njU"/>
                         <outlet property="labelEmail" destination="iVy-wq-e7h" id="bSF-GO-gPN"/>
                         <outlet property="labelName" destination="Dp2-ZE-Isv" id="8fk-tK-gec"/>
+                        <outlet property="notHaveRecentLabel" destination="AmL-fi-DL9" id="bGC-Y1-QZ1"/>
+                        <outlet property="notHaveRecentView" destination="y3x-by-ZGB" id="tlq-ka-zAm"/>
+                        <outlet property="notHaveRecomLabel" destination="nBM-eV-dbb" id="Aut-rU-SzW"/>
+                        <outlet property="notHaveRecomView" destination="f2E-tT-5ZT" id="hvD-qA-YIP"/>
                         <outlet property="topView" destination="cmM-0p-llw" id="YcD-DG-c3w"/>
                         <outlet property="userCountView" destination="w2y-v0-W4A" id="Dab-2M-9es"/>
                         <outlet property="viewAllExamButton" destination="FdL-X6-XIK" id="KIT-xk-RM4"/>
@@ -319,7 +358,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJV-27-0vo">
-                                <rect key="frame" x="119" y="130" width="136" height="59"/>
+                                <rect key="frame" x="16" y="130" width="343" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

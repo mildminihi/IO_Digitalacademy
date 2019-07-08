@@ -21,7 +21,7 @@ class ExamLoginViewController: UIViewController{
         self.usernameField.center.x -= self.view.bounds.width
         self.passwordField.center.x -= self.view.bounds.width
         self.loginButton.center.x -= self.view.bounds.width
-        self.textFieldDidBeginEditing(usernameField)
+//        self.textFieldDidBeginEditing(usernameField)
 //        self.textFieldShouldEndEditing(usernameField)
     }
     
