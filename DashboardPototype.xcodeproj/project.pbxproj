@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1375FC6522CF1F6800552F73 /* BridgingHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1375FC6422CF1F6800552F73 /* BridgingHeader.m */; };
 		13D48D6922C5B28500EBA40B /* ExamLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D48D6822C5B28500EBA40B /* ExamLoginViewController.swift */; };
 		13D48D6B22C5B41000EBA40B /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13D48D6A22C5B41000EBA40B /* LoginStoryboard.storyboard */; };
 		13D48D6D22C5B45300EBA40B /* icon_scb.png in Resources */ = {isa = PBXBuildFile; fileRef = 13D48D6C22C5B45300EBA40B /* icon_scb.png */; };
 		13D48D6F22C5B4FB00EBA40B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D48D6E22C5B4FB00EBA40B /* Extensions.swift */; };
 		13D48D7122C5B95500EBA40B /* 1152-blue-waves.json in Resources */ = {isa = PBXBuildFile; fileRef = 13D48D7022C5B95500EBA40B /* 1152-blue-waves.json */; };
-		13D48D8622C5FF0F00EBA40B /* AuthLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D48D8522C5FF0F00EBA40B /* AuthLoginResponse.swift */; };
+		13D48D8622C5FF0F00EBA40B /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D48D8522C5FF0F00EBA40B /* AuthResponse.swift */; };
 		583E4437DE9DFDC4D1EAC5D8 /* Pods_DashboardPototype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F96011EE34F3688DF5B4D09 /* Pods_DashboardPototype.framework */; };
 		6850773C22C5E3DE0099900F /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6850773B22C5E3DE0099900F /* Profile.storyboard */; };
 		6850774022C5E9A30099900F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850773F22C5E9A30099900F /* ProfileViewController.swift */; };
@@ -39,14 +38,12 @@
 
 /* Begin PBXFileReference section */
 		02A4B8EC2D7CA8B56F00ABA7 /* Pods-DashboardPototype.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DashboardPototype.release.xcconfig"; path = "Target Support Files/Pods-DashboardPototype/Pods-DashboardPototype.release.xcconfig"; sourceTree = "<group>"; };
-		1375FC6322CF1F6800552F73 /* DashboardPototype-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DashboardPototype-Bridging-Header.h"; sourceTree = "<group>"; };
-		1375FC6422CF1F6800552F73 /* BridgingHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BridgingHeader.m; sourceTree = "<group>"; };
 		13D48D6822C5B28500EBA40B /* ExamLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamLoginViewController.swift; sourceTree = "<group>"; };
 		13D48D6A22C5B41000EBA40B /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
 		13D48D6C22C5B45300EBA40B /* icon_scb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_scb.png; sourceTree = "<group>"; };
 		13D48D6E22C5B4FB00EBA40B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		13D48D7022C5B95500EBA40B /* 1152-blue-waves.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "1152-blue-waves.json"; sourceTree = "<group>"; };
-		13D48D8522C5FF0F00EBA40B /* AuthLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginResponse.swift; sourceTree = "<group>"; };
+		13D48D8522C5FF0F00EBA40B /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		3F96011EE34F3688DF5B4D09 /* Pods_DashboardPototype.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DashboardPototype.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6850773B22C5E3DE0099900F /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		6850773F22C5E9A30099900F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -98,13 +95,9 @@
 			isa = PBXGroup;
 			children = (
 				7A052A1122C44F2200F396B2 /* UserResponse.swift */,
-<<<<<<< HEAD
-				13D48D8522C5FF0F00EBA40B /* AuthLoginResponse.swift */,
-=======
 				13D48D8522C5FF0F00EBA40B /* AuthResponse.swift */,
 				7A17E2E322CB26AE00198181 /* MostDoExamResponse.swift */,
 				7AFDEC3722CE0FCA00457B0A /* RecentExamResponse.swift */,
->>>>>>> 4d45526c05e184a0ed027ac86846b6cba2b3f627
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -194,8 +187,6 @@
 				13D48D6A22C5B41000EBA40B /* LoginStoryboard.storyboard */,
 				13D48D6E22C5B4FB00EBA40B /* Extensions.swift */,
 				6850773B22C5E3DE0099900F /* Profile.storyboard */,
-				1375FC6422CF1F6800552F73 /* BridgingHeader.m */,
-				1375FC6322CF1F6800552F73 /* DashboardPototype-Bridging-Header.h */,
 			);
 			path = DashboardPototype;
 			sourceTree = "<group>";
@@ -242,7 +233,6 @@
 				TargetAttributes = {
 					7A76181622C10D910078FE38 = {
 						CreatedOnToolsVersion = 10.2.1;
-						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -331,16 +321,11 @@
 			files = (
 				F9953F6A22C5BA8000BB93AA /* ScoreHistoryViewController.swift in Sources */,
 				F9CD9E9022C5C37C000F47AD /* ScoreHistoryTableViewCell.swift in Sources */,
-				1375FC6522CF1F6800552F73 /* BridgingHeader.m in Sources */,
 				7AEBAEFF22C1BA02006309CB /* ExamRecommendCollectionViewCell.swift in Sources */,
 				13D48D6F22C5B4FB00EBA40B /* Extensions.swift in Sources */,
-<<<<<<< HEAD
-				13D48D8622C5FF0F00EBA40B /* AuthLoginResponse.swift in Sources */,
-=======
 				13D48D8622C5FF0F00EBA40B /* AuthResponse.swift in Sources */,
 				7AFDEC3A22CE103600457B0A /* RecentExamServies.swift in Sources */,
 				7AFDEC3822CE0FCA00457B0A /* RecentExamResponse.swift in Sources */,
->>>>>>> 4d45526c05e184a0ed027ac86846b6cba2b3f627
 				7A05E80F22C3BBBE00DB3E70 /* UserServices.swift in Sources */,
 				7A17E2E422CB26AE00198181 /* MostDoExamResponse.swift in Sources */,
 				7A76181D22C10D910078FE38 /* ViewController.swift in Sources */,
@@ -498,7 +483,6 @@
 			baseConfigurationReference = 743F202ACD5928DC8C10B9A7 /* Pods-DashboardPototype.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C9TZ52PJ6C;
 				INFOPLIST_FILE = DashboardPototype/Info.plist;
@@ -508,8 +492,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.supanat.DashboardPototype;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "DashboardPototype/DashboardPototype-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -520,7 +502,6 @@
 			baseConfigurationReference = 02A4B8EC2D7CA8B56F00ABA7 /* Pods-DashboardPototype.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C9TZ52PJ6C;
 				INFOPLIST_FILE = DashboardPototype/Info.plist;
@@ -530,7 +511,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.supanat.DashboardPototype;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "DashboardPototype/DashboardPototype-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
