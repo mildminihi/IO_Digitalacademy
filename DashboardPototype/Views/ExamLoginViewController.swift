@@ -8,12 +8,7 @@ class ExamLoginViewController: UIViewController{
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-    var authLoginResponseArray: [AuthLoginResponse] = []
-    let url = URL(string: "http://192.168.43.112:10080/api/auth")!
-    
-    var successCode: String = "1000"
-    var noDataCode: String  = "1699"
-    var wrongDataCode: String  = "1899"
+//    let authResponseArray: [StatusAuth] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +16,7 @@ class ExamLoginViewController: UIViewController{
         self.usernameField.center.x -= self.view.bounds.width
         self.passwordField.center.x -= self.view.bounds.width
         self.loginButton.center.x -= self.view.bounds.width
-        self.textFieldDidBeginEditing(usernameField)
-//        self.textFieldShouldEndEditing(usernameField)
+        
     }
     
     @objc func dismissKeyboard() {
@@ -73,93 +67,37 @@ class ExamLoginViewController: UIViewController{
     }
     
     @IBAction func btnLogin(){
+        print("Login")
+        let url = URL(string: "http://192.168.111.23:10080/api/auth")!
+//        AF.request(url, method: .get).responseJSON { (response) in
+//            if let data = response.data,
+//                let urlContent = NSString(data: data, encoding: String.Encoding.ascii.rawValue) {
+//                print(urlContent)
+//            } else {
+//                print("Error")
+//            }
+        // prepare json data
+        let json: [String: Any] = ["username": usernameField.text, "password": passwordField.text]
         
-        if usernameField.text?.isEmpty ?? true || passwordField.text?.isEmpty ?? true{
-            print("textField is empty")
-            self.alertFromActionLogin(title: "No Information", msg: "Please fields username/password")
-        } else {
-            self.postData()
-            self.goToMain()
-        }
-    }
-    
-    func postData(){
-        let body: [String: String] = ["username": usernameField.text!, "password": passwordField.text!]
-        AF.request(url, method: .post, parameters: body).responseJSON { (response) in
-            switch response.result{
-            case .success:
-                do {
-                    let result = try JSONDecoder().decode(AuthLoginResponse.self, from: response.data!)
-                    self.authLoginResponseArray = [result]
-                    let code = (self.authLoginResponseArray[0].status.code)
-                    if code == self.successCode{
-                        UserDefaults.standard.setValue((self.authLoginResponseArray[0].data.accessToken).sha256(), forKey: "token")
-                    }else if code == self.noDataCode{
-                        self.alertFromActionLogin(title: "Username is not registered", msg: "Please register")
-                    }else if code == self.wrongDataCode{
-                       self.alertFromActionLogin(title: "Wrong Username/Password", msg: "Please try again")
-                    }
-                } catch {
-                    print(error.localizedDescription)
-                }
-            case .failure(let error):
-                self.alertFromActionLogin(title: "No Internet", msg: "Please try again")
-                print("Network Error: \(error.localizedDescription)")
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        // create post request
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        // insert json data to the request
+        request.httpBody = jsonData
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
             }
         }
-    }
-    
-    func alertFromActionLogin(title: String, msg: String){
-        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        
-        // show the alert
-        self.present(alert, animated: true, completion: nil)
-    }
-    func goToMain(){
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "main_storyboard")
-        self.present(storyBoard, animated: true, completion: nil)
+        task.resume()
     }
 }
-
-extension String {
-    
-    func sha256() -> String{
-        if let stringData = self.data(using: String.Encoding.utf8) {
-            return hexStringFromData(input: digest(input: stringData as NSData))
-        }
-        return ""
-    }
-    
-    private func digest(input : NSData) -> NSData {
-        let digestLength = Int(CC_SHA256_DIGEST_LENGTH)
-        var hash = [UInt8](repeating: 0, count: digestLength)
-        CC_SHA256(input.bytes, UInt32(input.length), &hash)
-        return NSData(bytes: hash, length: digestLength)
-    }
-    
-    private  func hexStringFromData(input: NSData) -> String {
-        var bytes = [UInt8](repeating: 0, count: input.length)
-        input.getBytes(&bytes, length: input.length)
-        
-        var hexString = ""
-        for byte in bytes {
-            hexString += String(format:"%02x", UInt8(byte))
-        }
-        return hexString
-    }
-}
-
-extension ExamLoginViewController : UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.isFirstResponder == true {
-            textField.placeholder = "UsernameXX"
-        }
-        
-    }
-    func textFieldShouldEndEditing(_ textField: UITextField) {
-        self.usernameField.placeholder = ""
-        
-    }
-}
-
