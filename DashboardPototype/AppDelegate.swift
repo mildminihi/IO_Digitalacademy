@@ -13,11 +13,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let storyBoard = UIStoryboard(name: "LoginStoryboard", bundle: nil)
         let secondVC = storyBoard.instantiateViewController(withIdentifier: "ExamLogin") as! ExamLoginViewController
         self.window?.rootViewController = secondVC
+        
+        UserDefaults.standard.set("", forKey: "token")
         
         return true
     }
