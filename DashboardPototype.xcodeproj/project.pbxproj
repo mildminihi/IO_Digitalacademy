@@ -98,13 +98,10 @@
 			isa = PBXGroup;
 			children = (
 				7A052A1122C44F2200F396B2 /* UserResponse.swift */,
-<<<<<<< HEAD
 				13D48D8522C5FF0F00EBA40B /* AuthLoginResponse.swift */,
-=======
 				13D48D8522C5FF0F00EBA40B /* AuthResponse.swift */,
 				7A17E2E322CB26AE00198181 /* MostDoExamResponse.swift */,
 				7AFDEC3722CE0FCA00457B0A /* RecentExamResponse.swift */,
->>>>>>> 4d45526c05e184a0ed027ac86846b6cba2b3f627
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -334,13 +331,10 @@
 				1375FC6522CF1F6800552F73 /* BridgingHeader.m in Sources */,
 				7AEBAEFF22C1BA02006309CB /* ExamRecommendCollectionViewCell.swift in Sources */,
 				13D48D6F22C5B4FB00EBA40B /* Extensions.swift in Sources */,
-<<<<<<< HEAD
 				13D48D8622C5FF0F00EBA40B /* AuthLoginResponse.swift in Sources */,
-=======
 				13D48D8622C5FF0F00EBA40B /* AuthResponse.swift in Sources */,
 				7AFDEC3A22CE103600457B0A /* RecentExamServies.swift in Sources */,
 				7AFDEC3822CE0FCA00457B0A /* RecentExamResponse.swift in Sources */,
->>>>>>> 4d45526c05e184a0ed027ac86846b6cba2b3f627
 				7A05E80F22C3BBBE00DB3E70 /* UserServices.swift in Sources */,
 				7A17E2E422CB26AE00198181 /* MostDoExamResponse.swift in Sources */,
 				7A76181D22C10D910078FE38 /* ViewController.swift in Sources */,
