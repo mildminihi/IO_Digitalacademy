@@ -14,26 +14,32 @@ class ScoreHistoryViewController: UIViewController {
     @IBOutlet weak var mTableView: UITableView!
 
     
-    var mDataArray: [[String:String]] = []
     var mTitleArray = ["robot framework-01", "Core-Android", "Advanced-Android"]
     var mScoreArray = ["12/20", "18/20", "20/20"]
     var mDateArray = ["08-12-2019", "10-12-2019", "12-12-2019"]
+    var historyArray : [AllHistory] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        HistoryServices().self.getHistoryService { (historyData) in
+            self.historyArray = historyData[0].data.allHistory
+            self.mTableView.reloadData()
+        }
+        
     }
 }
 
 extension ScoreHistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.historyArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "score") as! ScoreHistoryTableViewCell
-        cell.labelScore.text = mScoreArray[indexPath.row]
-        cell.labelExamTitle.text = mTitleArray[indexPath.row]
-        cell.labelDate.text = mDateArray[indexPath.row]
+        
+        cell.labelScore.text = "\(self.historyArray[indexPath.row].pointUser)/\(self.historyArray[indexPath.row].pointExam)"
+        cell.labelExamTitle.text = self.historyArray[indexPath.row].examName
+        cell.labelDate.text = "\(self.historyArray[indexPath.row].timestamp)"
         
         return cell
     }
