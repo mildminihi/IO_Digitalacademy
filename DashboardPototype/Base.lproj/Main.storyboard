@@ -21,7 +21,7 @@
         <!--Dashboard-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DashboardPototype" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="DashBoardViewController" customModule="DashboardPototype" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -389,7 +389,7 @@
         <!--Navigation Controller-->
         <scene sceneID="cft-lP-Kig">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Iwz-TK-CV7" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="main_storyboard" automaticallyAdjustsScrollViewInsets="NO" id="Iwz-TK-CV7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eKv-z1-2i8">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>

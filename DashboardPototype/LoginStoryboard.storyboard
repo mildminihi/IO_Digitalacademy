@@ -45,7 +45,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                                <textInputTraits key="textInputTraits" textContentType="username"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="15"/>
@@ -78,7 +78,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="btnLogin" destination="cqR-gG-zdi" eventType="touchUpInside" id="McA-i1-XMc"/>
-                                    <segue destination="QZR-Oe-KjR" kind="show" id="XqW-zU-9SK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -94,14 +93,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wkN-qi-BDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-407.19999999999999" y="952.17391304347836"/>
-        </scene>
-        <!--Main-->
-        <scene sceneID="byj-io-REO">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="QZR-Oe-KjR" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OzH-R3-M2H" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="253" y="920"/>
         </scene>
     </scenes>
     <resources>
