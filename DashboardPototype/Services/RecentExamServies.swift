@@ -16,11 +16,12 @@ class RecentExamServices: UIViewController {
     func getRecentExamService(completion: @escaping ([RecentExamResponse]) -> Void) {
         
         var recentExamArray:[RecentExamResponse] = []
-        let url = "http://localhost:9000/e-xam/api/exam/last_exam"
+        let url = "http://localhost:9000/api/exam/last_exam/1"
         let headers: HTTPHeaders = [
             "token" : "1234"
         ]
         AF.request(url, method: .get, headers: headers).responseJSON { response in
+            print(response)
             switch response.result {
             case .success:
                 do {
