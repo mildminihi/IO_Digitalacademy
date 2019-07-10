@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class ViewController: UIViewController {
+class DashBoardViewController: UIViewController {
     
     @IBOutlet weak var labelEmail: UILabel!
     @IBOutlet weak var labelName: UILabel!
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
 }
 
 //CollectionView
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension DashBoardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == examCollectView{
             return recentExamArray.count
@@ -104,7 +104,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 }
 
 //Fuction on ViewController
-extension ViewController {
+extension DashBoardViewController {
     
     func fetchData() {
         self.activityIndicator.isHidden = false
@@ -193,7 +193,7 @@ extension UIImage {
 }
 
 //UI Extension
-extension ViewController {
+extension DashBoardViewController {
     
     func initUi() {
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.07057655603, green: 0.07059641927, blue: 0.07057393342, alpha: 1)
