@@ -9,11 +9,11 @@ class ExamLoginViewController: UIViewController{
     @IBOutlet weak var loginButton: UIButton!
     
     var authLoginResponseArray: [AuthLoginResponse] = []
-    let url = URL(string: "http://192.168.43.112:10080/api/auth")!
+    let url = URL(string: "http://192.168.1.27:9988/api/auth")!
     
     var successCode: String = "1000"
     var noDataCode: String  = "1699"
-    var wrongDataCode: String  = "1899"
+    var wrongDataCode: String  = "1599"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,16 +84,18 @@ class ExamLoginViewController: UIViewController{
     }
     
     func postData(){
-        let body: [String: String] = ["username": usernameField.text!, "password": passwordField.text!]
-        AF.request(url, method: .post, parameters: body).responseJSON { (response) in
+        let body: [String: String] = ["username": usernameField.text!, "password": (passwordField.text!.sha256())]
+        AF.request(url, method: .post, parameters: body, encoding: JSONEncoding.default).responseJSON { (response) in
             switch response.result{
             case .success:
                 do {
+                    print(response)
                     let result = try JSONDecoder().decode(AuthLoginResponse.self, from: response.data!)
                     self.authLoginResponseArray = [result]
                     let code = (self.authLoginResponseArray[0].status.code)
                     if code == self.successCode{
                         UserDefaults.standard.setValue((self.authLoginResponseArray[0].data.accessToken).sha256(), forKey: "token")
+                        print("SUCCESS")
                     }else if code == self.noDataCode{
                         self.alertFromActionLogin(title: "Username is not registered", msg: "Please register")
                     }else if code == self.wrongDataCode{

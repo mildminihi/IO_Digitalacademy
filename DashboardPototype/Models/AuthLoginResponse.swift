@@ -22,10 +22,5 @@ struct AuthDataClass: Codable {
 
 // MARK: - Status
 struct AuthStatus: Codable {
-    let code, statusDescription: String
-    
-    enum CodingKeys: String, CodingKey {
-        case code
-        case statusDescription = "description"
-    }
+    let code, message: String
 }
