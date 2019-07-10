@@ -15,7 +15,7 @@ class HistoryServices: UIViewController {
     func getHistoryService(completion: @escaping ([HistoryResponse]) -> Void) {
         
         var historyArray:[HistoryResponse] = []
-        let url = "http://localhost:9000/e-xam/api/exam/history"
+        let url = Constants.historyServiceUrl
         let headers: HTTPHeaders = [
             "token" : "1234"
         ]

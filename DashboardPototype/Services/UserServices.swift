@@ -15,7 +15,7 @@ class UserServices: UIViewController {
     func getUserProfileService(completion: @escaping ([UserDataClass]) -> Void) {
         
         var dataArray: [UserDataClass] = []
-        let url = "http://localhost:9000/api/user/profileInfo"
+        let url = Constants.userServiceUrl
         AF.request(url, method: .get).responseJSON { response in
             switch response.result {
             case .success:

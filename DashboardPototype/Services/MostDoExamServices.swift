@@ -15,7 +15,7 @@ class MostDoExamServices: UIViewController {
     func getMostDoExamService(completion: @escaping ([MostDoExamResponse]) -> Void) {
         
         var mostDoArray:[MostDoExamResponse] = []
-        let url = "http://localhost:9000/api/exam/exam_most"
+        let url = Constants.mostDoExamServiceUrl
         let headers: HTTPHeaders = [
             "token" : "1234"
         ]

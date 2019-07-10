@@ -16,7 +16,7 @@ class RecentExamServices: UIViewController {
     func getRecentExamService(completion: @escaping ([RecentExamResponse]) -> Void) {
         
         var recentExamArray:[RecentExamResponse] = []
-        let url = "http://localhost:9000/api/exam/last_exam/1"
+        let url = Constants.recentExamServiceUrl
         let headers: HTTPHeaders = [
             "token" : "1234"
         ]
