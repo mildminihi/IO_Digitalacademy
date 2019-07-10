@@ -18,6 +18,9 @@
 		6850773C22C5E3DE0099900F /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6850773B22C5E3DE0099900F /* Profile.storyboard */; };
 		6850774022C5E9A30099900F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850773F22C5E9A30099900F /* ProfileViewController.swift */; };
 		6850774422C5EB2B0099900F /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850774322C5EB2B0099900F /* ProfileTableViewCell.swift */; };
+		6850774822C5FD800099900F /* ProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850774722C5FD800099900F /* ProfileResponse.swift */; };
+		687A7CFD22D49BFB004A6CBB /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687A7CFC22D49BFB004A6CBB /* EditProfileViewController.swift */; };
+		687A7CFF22D49EA0004A6CBB /* EditProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687A7CFE22D49EA0004A6CBB /* EditProfileTableViewCell.swift */; };
 		7A052A1222C44F2200F396B2 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A052A1122C44F2200F396B2 /* UserResponse.swift */; };
 		7A052A3222C49BB200F396B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A052A3122C49BB200F396B2 /* Assets.xcassets */; };
 		7A05E80F22C3BBBE00DB3E70 /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A05E80E22C3BBBE00DB3E70 /* UserServices.swift */; };
@@ -53,6 +56,9 @@
 		6850773B22C5E3DE0099900F /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		6850773F22C5E9A30099900F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6850774322C5EB2B0099900F /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		6850774722C5FD800099900F /* ProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponse.swift; sourceTree = "<group>"; };
+		687A7CFC22D49BFB004A6CBB /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		687A7CFE22D49EA0004A6CBB /* EditProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewCell.swift; sourceTree = "<group>"; };
 		743F202ACD5928DC8C10B9A7 /* Pods-DashboardPototype.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DashboardPototype.debug.xcconfig"; path = "Target Support Files/Pods-DashboardPototype/Pods-DashboardPototype.debug.xcconfig"; sourceTree = "<group>"; };
 		7A052A1122C44F2200F396B2 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		7A052A3122C49BB200F396B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				7A052A1122C44F2200F396B2 /* UserResponse.swift */,
+				6850774722C5FD800099900F /* ProfileResponse.swift */,
 				13D48D8522C5FF0F00EBA40B /* AuthLoginResponse.swift */,
 				7A17E2E322CB26AE00198181 /* MostDoExamResponse.swift */,
 				7AFDEC3722CE0FCA00457B0A /* RecentExamResponse.swift */,
@@ -137,6 +144,7 @@
 				7A76181C22C10D910078FE38 /* DashBoardViewController.swift */,
 				F9953F6922C5BA8000BB93AA /* ScoreHistoryViewController.swift */,
 				6850773F22C5E9A30099900F /* ProfileViewController.swift */,
+				687A7CFC22D49BFB004A6CBB /* EditProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -158,6 +166,7 @@
 				7AEBAEFE22C1BA02006309CB /* ExamRecommendCollectionViewCell.swift */,
 				F9CD9E8F22C5C37C000F47AD /* ScoreHistoryTableViewCell.swift */,
 				6850774322C5EB2B0099900F /* ProfileTableViewCell.swift */,
+				687A7CFE22D49EA0004A6CBB /* EditProfileTableViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -337,10 +346,12 @@
 				1375FC6522CF1F6800552F73 /* BridgingHeader.m in Sources */,
 				7AEBAEFF22C1BA02006309CB /* ExamRecommendCollectionViewCell.swift in Sources */,
 				13D48D6F22C5B4FB00EBA40B /* Extensions.swift in Sources */,
-				13D48D8622C5FF0F00EBA40B /* AuthLoginResponse.swift in Sources */,
+				6850774822C5FD800099900F /* ProfileResponse.swift in Sources */,
+				13D48D8622C5FF0F00EBA40B /* AuthResponse.swift in Sources */,
 				13D48D8622C5FF0F00EBA40B /* AuthLoginResponse.swift in Sources */,
 				7AFDEC3A22CE103600457B0A /* RecentExamServies.swift in Sources */,
 				7AFDEC3822CE0FCA00457B0A /* RecentExamResponse.swift in Sources */,
+				687A7CFD22D49BFB004A6CBB /* EditProfileViewController.swift in Sources */,
 				7A05E80F22C3BBBE00DB3E70 /* UserServices.swift in Sources */,
 				7A17E2E422CB26AE00198181 /* MostDoExamResponse.swift in Sources */,
 				7A76181D22C10D910078FE38 /* DashBoardViewController.swift in Sources */,
@@ -349,6 +360,7 @@
 				6850774022C5E9A30099900F /* ProfileViewController.swift in Sources */,
 				13D48D6922C5B28500EBA40B /* ExamLoginViewController.swift in Sources */,
 				7AEBAEFD22C1B2DD006309CB /* ExamCollectionViewCell.swift in Sources */,
+				687A7CFF22D49EA0004A6CBB /* EditProfileTableViewCell.swift in Sources */,
 				6850774422C5EB2B0099900F /* ProfileTableViewCell.swift in Sources */,
 				7A052A1222C44F2200F396B2 /* UserResponse.swift in Sources */,
 				7A76181B22C10D910078FE38 /* AppDelegate.swift in Sources */,
