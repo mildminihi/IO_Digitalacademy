@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = secondVC
         
         UserDefaults.standard.set("", forKey: "token")
+        UserDefaults.standard.set("", forKey: "username")
         
         return true
     }
