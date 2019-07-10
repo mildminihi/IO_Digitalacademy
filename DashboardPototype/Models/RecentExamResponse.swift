@@ -33,11 +33,14 @@ struct DataClassRecentExam: Codable {
 struct LastDo: Codable {
     let examID: Int
     let examName: String
-    let timestamp: Int
+    let examTotalScore, countQuestion: Int
+    let timestamp: String
     
     enum CodingKeys: String, CodingKey {
         case examID = "exam_id"
         case examName = "exam_name"
+        case examTotalScore = "exam_total_score"
+        case countQuestion = "count_question"
         case timestamp
     }
 }
