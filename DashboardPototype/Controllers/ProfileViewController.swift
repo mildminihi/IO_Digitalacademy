@@ -9,15 +9,22 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var mTableView: UITableView!
     @IBOutlet weak var mPreviewImageview: UIImageView!
     
+    
+    
+    
+    
     var mDataArray : [String:Any] = [:]
     //    var mDataArray: DataClass = DataClass()
     
 //            let url = "http://192.168.110.91:9091/api/user/profileInfo"
-    let mUrl = "http://localhost:9000/api/user/profileInfo"
+    
+    let mUrl = "http://localhost:1001/api/user/profileInfo"
+//    let mUrl = "http://192.168.109.211:8089/api/user/profileInfo"
+    //    let mUrl = "http://192.168.109.211:8089/api/user/profileInfo"
 
     
     var mRefresh: UIRefreshControl = UIRefreshControl()
-    let headers: HTTPHeaders = ["Access-Token": "1234"]
+    let headers: HTTPHeaders = ["token": "Bearer asdasd12"]
     
     
     
@@ -72,7 +79,7 @@ class ProfileViewController: UIViewController {
 //        self.setupRefresh()
         //        self.query()
         
-        //        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        //        self.navigationItem.rightBarButtonItem = self.editButtonItem 
         
         //        self.view.backgroundColor = #colorLiteral(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)
         self.view.backgroundColor = UIColor.init(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)
@@ -81,17 +88,25 @@ class ProfileViewController: UIViewController {
         //        let selectImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         self.mPreviewImageview.image = selectImage
         self.mPreviewImageview.drawAsCircle()
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(nav_to_edit_page))
     }
     
-    //    override func setEditing(_ editing: Bool, animated: Bool) {
-    //        if self.navigationItem.rightBarButtonItem?.title == "Edit" {
-    //            self.navigationItem.rightBarButtonItem?.title = "Done"
-    //            self.mTableView.setEditing(true, animated: true)
-    //        }else{
-    //            self.navigationItem.rightBarButtonItem?.title = "Edit"
-    //            self.mTableView.setEditing(false, animated: true)
-    //        }
-    //    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Cancel"
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+    }
+    
+//        override func setEditing(_ editing: Bool, animated: Bool) {
+//            if self.navigationItem.rightBarButtonItem?.title == "Edit" {
+//                self.navigationItem.rightBarButtonItem?.title = "Done"
+//                self.mTableView.setEditing(true, animated: true)
+//            }else{
+//                self.navigationItem.rightBarButtonItem?.title = "Edit"
+//                self.mTableView.setEditing(false, animated: true)
+//            }
+//        }
     
     //    @IBAction func insertDatabase(){
     //        if DatabaseManagement.instance.insert(){
@@ -111,7 +126,14 @@ class ProfileViewController: UIViewController {
     //        self.mTableView.reloadData()
     //    }
     
-    
+    @objc func nav_to_edit_page() {
+        let thisStoryboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+//        let newViewController = thisStoryboard.instantiateViewController(withIdentifier: "EditProfileViewController") as! EditProfileViewController
+//        self.present(newViewController, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "ToEditProfileViewController", sender: nil)
+        
+        
+    }
     
     func setupRefresh(){
         self.mRefresh.addTarget(self, action: #selector(feedData), for: .valueChanged)
@@ -197,8 +219,17 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
             cell = tableView.dequeueReusableCell(withIdentifier: "name section") as! ProfileTableViewCell
             //            cell.mFirstnameThVal.text = mDataDict["firstName_TH"] as? String
             //            cell.mLastnameThVal.text = mDataDict["lastName_TH"] as? String
-            cell.mFirstnameEngVal.text = self.mDataArray["firstName_EN"] as? String
-            cell.mLastnameEngVal.text = self.mDataArray["lastName_EN"] as? String
+            
+            if let first_name = self.mDataArray["firstName_EN"] as? String {
+                cell.mFirstnameEngVal.text = first_name as String
+            } else {
+                cell.mFirstnameEngVal.text = "N/A"
+            }
+            if let last_name = self.mDataArray["lastName_EN"] as? String {
+                cell.mLastnameEngVal.text = last_name as String
+            } else {
+                cell.mLastnameEngVal.text = "N/A"
+            }
         }
         return cell
     }
