@@ -12,14 +12,11 @@ import Alamofire
 
 class UserServices: UIViewController {
     
-    func getUserProfileService(completion: @escaping ([DataClass]) -> Void) {
+    func getUserProfileService(completion: @escaping ([UserDataClass]) -> Void) {
         
-        var dataArray:[DataClass] = []
-        let url = "http://localhost:1150/api/user/profileInfo"
+        var dataArray: [UserDataClass] = []
+        let url = Constants.userServiceUrl
         AF.request(url, method: .get).responseJSON { response in
-//            print("Request: \(String(describing: response.request))")   // original url request
-//            print("Response: \(String(describing: response.response))") // http url response
-//            print("Result: \(response.result)")                         // response serialization result
             switch response.result {
             case .success:
                 do {

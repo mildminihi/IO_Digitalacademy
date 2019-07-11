@@ -19,12 +19,14 @@ struct DataClassMostExam: Codable {
 struct HistoryMostDo: Codable {
     let examID: Int
     let examName: String
-    let countAllUserDo: Int?
+    let countAllDo, examTotalScore, countQuestion: Int
     
     enum CodingKeys: String, CodingKey {
         case examID = "exam_id"
         case examName = "exam_name"
-        case countAllUserDo = "count_all_user_do"
+        case countAllDo = "count_all_do"
+        case examTotalScore = "exam_total_score"
+        case countQuestion = "count_question"
     }
 }
 

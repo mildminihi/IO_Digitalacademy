@@ -9,7 +9,7 @@ class ExamLoginViewController: UIViewController{
     @IBOutlet weak var loginButton: UIButton!
     
     var authLoginResponseArray: [AuthLoginResponse] = []
-    let url = URL(string: "http://192.168.109.207:9999/auth")!
+    let url = URL(string: Constants.loginServiceUrl)!
     
     var successCode: Int = 1000
     var noDataCode: Int  = 1699
