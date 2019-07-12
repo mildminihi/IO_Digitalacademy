@@ -94,6 +94,10 @@ class ExamLoginViewController: UIViewController{
         usernameField.placeholder = "Username"
     }
     
+    @IBAction func passwordPlaceEnd(_ sender: Any) {
+        passwordField.placeholder = "Password"
+    }
+    
     func postData(){
         let body: [String: String] = ["username": usernameField.text!, "password": (passwordField.text!.sha256()).uppercased()]
         AF.request(url, method: .post, parameters: body, encoding: JSONEncoding.default).responseJSON { (response) in
