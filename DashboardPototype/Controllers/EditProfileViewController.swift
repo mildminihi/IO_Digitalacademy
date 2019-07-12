@@ -100,6 +100,17 @@ class EditProfileViewController: UIViewController {
     }
     
     @objc func putProfileData(){
+        let message = "Submit Change"
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        self.present(alert, animated: true)
+        
+        let duration: Double = 1.5
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) {
+            alert.dismiss(animated: true)
+            self.navigationController?.popViewController(animated: true)
+        }
+        
         
     }
     
