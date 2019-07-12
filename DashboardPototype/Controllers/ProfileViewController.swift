@@ -103,7 +103,14 @@ class ProfileViewController: UIViewController {
 //        backItem.action = #selector(showLog)
         backItem.title = "Cancel"
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+        
+        if segue.identifier == "ToEditProfileViewController" {
+            let targetVC = segue.destination as! EditProfileViewController
+            targetVC.mDataArray = self.mDataArray
+        }
+        
     }
+    
     
 //    @objc func showLog() -> UIViewController{
 //        print("Back btn callback??")
@@ -142,6 +149,8 @@ class ProfileViewController: UIViewController {
         let thisStoryboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
 //        let newViewController = thisStoryboard.instantiateViewController(withIdentifier: "EditProfileViewController") as! EditProfileViewController
 //        self.present(newViewController, animated: true, completion: nil)
+        
+        
         self.performSegue(withIdentifier: "ToEditProfileViewController", sender: nil)
         
         

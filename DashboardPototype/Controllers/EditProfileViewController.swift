@@ -17,8 +17,6 @@ class EditProfileViewController: UIViewController {
     var mIsProfileDataChange: Bool = false
     
     var mDataArray : [String:Any] = [:]
-  
-    let mUrl = Constants.profileServiceUrl
     
     
     var mRefresh: UIRefreshControl = UIRefreshControl()
@@ -41,7 +39,7 @@ class EditProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.feedData()
+//        self.feedData()
         
         self.view.backgroundColor = UIColor.init(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)
         // Do any additional setup after loading the view.
@@ -50,11 +48,9 @@ class EditProfileViewController: UIViewController {
         self.mPreviewImageview.image = selectImage
         self.mPreviewImageview.drawAsCircle()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(putProfileData))
-        navigationItem.title = "Edit Profile"
-        navigationItem.hidesBackButton = true
+        self.setupNavBar()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.backButtonTapped))
+        
 
         
         
@@ -64,6 +60,14 @@ class EditProfileViewController: UIViewController {
         
         
         // Do any additional setup after loading the view.
+    }
+    
+    func setupNavBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(putProfileData))
+        navigationItem.title = "Edit Profile"
+        navigationItem.hidesBackButton = true
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.backButtonTapped))
     }
     
     @objc func backButtonTapped() {
@@ -80,8 +84,8 @@ class EditProfileViewController: UIViewController {
     func showAlert(responseMsg: String){
         
         let alertVC = UIAlertController(title: "Response", message: responseMsg, preferredStyle: .actionSheet)
-        alertVC.addAction(UIAlertAction(title: "CLOSE", style: .cancel, handler: nil))
-        alertVC.addAction(UIAlertAction(title: "Discard", style: .default, handler: { (alert) in
+        alertVC.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+        alertVC.addAction(UIAlertAction(title: "Discard", style: .destructive, handler: { (alert) in
             self.navigationController?.popViewController(animated: true)
         }))
         
@@ -91,8 +95,8 @@ class EditProfileViewController: UIViewController {
     
     
     func setupRefresh(){
-        self.mRefresh.addTarget(self, action: #selector(feedData), for: .valueChanged)
-        self.mTableView.addSubview(self.mRefresh)
+//        self.mRefresh.addTarget(self, action: #selector(feedData), for: .valueChanged)
+//        self.mTableView.addSubview(self.mRefresh)
     }
     
     @objc func putProfileData(){
@@ -103,50 +107,6 @@ class EditProfileViewController: UIViewController {
         
     }
     
-    @objc func feedData(){
-        
-        AF.request(self.mUrl, method: .get, headers: self.headers).responseJSON { (response) in
-            
-            print("raw res:", response)
-            
-            switch response.result{
-            case .success:
-                
-                do{
-                    let result = try JSONDecoder().decode(ProfileResponse.self, from: response.data!)
-                    //                    print("res : \(result.data)")
-                    self.mDataArray = result.data.dictionary
-                    print(self.mDataArray)
-                    //                    print(self.mDataArray["id"])
-                    //                    for key in self.mDataDict {
-                    //                        self.mDataDict[key] = result.data.dictionary[key]
-                    //                    }
-                    //                    print("res data:", self.mDataArray as Any)
-                    
-                    
-                    // important
-                    self.mTableView.reloadData()
-                    //
-                } catch {
-                    print("error some \(error)")
-                }
-                
-            case .failure(let error):
-                print("network error: \(error.localizedDescription)")
-                
-            default:
-                print("swift case error")
-            }
-            
-            
-            
-            
-            // 2 second
-            //            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            //                self.mRefresh.endRefreshing()
-            //            }
-        }
-    }
     
     @IBAction func firstnameChanged(_ sender: Any) {
         self.mIsProfileDataChange = true
@@ -198,7 +158,7 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource{
             if let profile_value = self.mDataArray[keyName as String] as? String {
                 cell.mValue.text = profile_value
             } else {
-                cell.mValue.text = "N/A"
+                cell.mValue.text = ""
             }
             
         } else {
@@ -209,12 +169,12 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource{
             if let first_name = self.mDataArray["firstName_EN"] as? String {
                 cell.mFirstnameEngVal.text = first_name as String
             } else {
-                cell.mFirstnameEngVal.text = "N/A"
+                cell.mFirstnameEngVal.text = ""
             }
             if let last_name = self.mDataArray["lastName_EN"] as? String {
                 cell.mLastnameEngVal.text = last_name as String
             } else {
-                cell.mLastnameEngVal.text = "N/A"
+                cell.mLastnameEngVal.text = ""
             }
         }
         return cell
