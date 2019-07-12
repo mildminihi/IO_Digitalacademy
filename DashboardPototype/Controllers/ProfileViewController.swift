@@ -92,11 +92,23 @@ class ProfileViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(nav_to_edit_page))
     }
     
+//    override func viewDidDisappear(_ animated: Bool) {
+//        <#code#>
+//    }
+//
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let backItem = UIBarButtonItem(barButtonSystemItem: <#T##UIBarButtonItem.SystemItem#>, target: <#T##Any?#>, action: <#T##Selector?#>)
         let backItem = UIBarButtonItem()
+//        backItem.target = showLog()
+//        backItem.action = #selector(showLog)
         backItem.title = "Cancel"
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
     }
+    
+//    @objc func showLog() -> UIViewController{
+//        print("Back btn callback??")
+//        return self
+//    }
     
 //        override func setEditing(_ editing: Bool, animated: Bool) {
 //            if self.navigationItem.rightBarButtonItem?.title == "Edit" {

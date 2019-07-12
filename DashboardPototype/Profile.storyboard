@@ -345,7 +345,7 @@
                     <connections>
                         <outlet property="mPreviewImageview" destination="zqV-Xb-bjl" id="J5Q-Fs-Q1b"/>
                         <outlet property="mTableView" destination="ZOm-9o-3Sp" id="oog-kN-ES7"/>
-                        <segue destination="ACa-Gx-Uvx" kind="unwind" identifier="page_detail_unwind" unwindAction="exitEditProfilePage:" id="8io-rq-gBx"/>
+                        <segue destination="ACa-Gx-Uvx" kind="unwind" unwindAction="exitEditProfilePage:" id="Xjy-p6-cDs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Isn-BB-Et3" userLabel="First Responder" sceneMemberID="firstResponder"/>
