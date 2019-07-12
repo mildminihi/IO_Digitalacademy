@@ -14,6 +14,7 @@ class EditProfileViewController: UIViewController {
     
     @IBOutlet weak var mTableView: UITableView!
     @IBOutlet weak var mPreviewImageview: UIImageView!
+    var mIsProfileDataChange: Bool = false
     
     var mDataArray : [String:Any] = [:]
   
@@ -51,13 +52,40 @@ class EditProfileViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(putProfileData))
         navigationItem.title = "Edit Profile"
+        navigationItem.hidesBackButton = true
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.backButtonTapped))
 
+        
+        
         // Set name of back button
 //        let backButton = UIBarButtonItem()
 //        backButton.title = "Cancel"
         
         
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func backButtonTapped() {
+        let responseMsg: String = "Are you sure to discard changing profile?"
+        if(self.mIsProfileDataChange){
+          self.showAlert(responseMsg: responseMsg)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        
+    }
+    
+    func showAlert(responseMsg: String){
+        
+        let alertVC = UIAlertController(title: "Response", message: responseMsg, preferredStyle: .actionSheet)
+        alertVC.addAction(UIAlertAction(title: "CLOSE", style: .cancel, handler: nil))
+        alertVC.addAction(UIAlertAction(title: "Discard", style: .default, handler: { (alert) in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        
+        self.present(alertVC, animated: true, completion: nil)
     }
     
     
@@ -68,6 +96,10 @@ class EditProfileViewController: UIViewController {
     }
     
     @objc func putProfileData(){
+        
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
         
     }
     
@@ -116,7 +148,18 @@ class EditProfileViewController: UIViewController {
         }
     }
     
-
+    @IBAction func firstnameChanged(_ sender: Any) {
+        self.mIsProfileDataChange = true
+    }
+    
+    @IBAction func lastNameChanged(_ sender: Any) {
+        self.mIsProfileDataChange = true
+    }
+    
+    @IBAction func valueChanged(_ sender: Any) {
+        self.mIsProfileDataChange = true
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -127,9 +170,7 @@ class EditProfileViewController: UIViewController {
     }
     */
 
-    @IBAction func exitEditProfilePage(_ sender: UIStoryboardSegue){
-      print("sasssss")
-    }
+    
 }
 
 extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource{
