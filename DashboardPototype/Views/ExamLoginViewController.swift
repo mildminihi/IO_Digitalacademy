@@ -9,11 +9,11 @@ class ExamLoginViewController: UIViewController{
     @IBOutlet weak var loginButton: UIButton!
     
     var authLoginResponseArray: [AuthLoginResponse] = []
-    let url = URL(string: "http://192.168.1.27:9988/api/auth")!
+    let url = URL(string: Constants.loginServiceUrl)!
     
-    var successCode: String = "1000"
-    var noDataCode: String  = "1699"
-    var wrongDataCode: String  = "1599"
+    var successCode: Int = 1000
+    var noDataCode: Int  = 1699
+    var wrongDataCode: Int  = 1599
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class ExamLoginViewController: UIViewController{
         self.usernameField.center.x -= self.view.bounds.width
         self.passwordField.center.x -= self.view.bounds.width
         self.loginButton.center.x -= self.view.bounds.width
-        self.textFieldDidBeginEditing(usernameField)
+//        self.textFieldDidBeginEditing(usernameField)
 //        self.textFieldShouldEndEditing(usernameField)
     }
     
@@ -82,19 +82,34 @@ class ExamLoginViewController: UIViewController{
             self.goToMain()
         }
     }
+    @IBAction func usernameField(_ sender: Any) {
+        usernameField.placeholder = ""
+    }
+    
+    @IBAction func passwordField(_ sender: Any) {
+        passwordField.placeholder = ""
+    }
+    
+    @IBAction func usernamePlaceEnd(_ sender: Any) {
+        usernameField.placeholder = "Username"
+    }
     
     func postData(){
-        let body: [String: String] = ["username": usernameField.text!, "password": (passwordField.text!.sha256())]
+        let body: [String: String] = ["username": usernameField.text!, "password": (passwordField.text!.sha256()).uppercased()]
         AF.request(url, method: .post, parameters: body, encoding: JSONEncoding.default).responseJSON { (response) in
             switch response.result{
             case .success:
+                print(response)
                 do {
-                    print(response)
                     let result = try JSONDecoder().decode(AuthLoginResponse.self, from: response.data!)
                     self.authLoginResponseArray = [result]
                     let code = (self.authLoginResponseArray[0].status.code)
+                    print(code)
+                    print(type(of: code))
                     if code == self.successCode{
-                        UserDefaults.standard.setValue((self.authLoginResponseArray[0].data.accessToken).sha256(), forKey: "token")
+                        UserDefaults.standard.setValue((self.authLoginResponseArray[0].data.accessToken), forKey: "token")
+                        UserDefaults.standard.setValue(self.usernameField.text!, forKey: "username")
+//                        print(UserDefaults.standard.string(forKey: "token"))
                         print("SUCCESS")
                     }else if code == self.noDataCode{
                         self.alertFromActionLogin(title: "Username is not registered", msg: "Please register")
@@ -152,16 +167,28 @@ extension String {
     }
 }
 
-extension ExamLoginViewController : UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.isFirstResponder == true {
-            textField.placeholder = "UsernameXX"
-        }
-        
-    }
-    func textFieldShouldEndEditing(_ textField: UITextField) {
-        self.usernameField.placeholder = ""
-        
-    }
-}
+//class NotesViewController : UIViewController, UITextViewDelegate {
+//
+//    @IBOutlet var textView : UITextView!
+//    var placeholderLabel : UILabel!
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        textView.delegate = self
+//        placeholderLabel = UILabel()
+//        placeholderLabel.text = "Enter some text..."
+//        placeholderLabel.font = UIFont.italicSystemFont(ofSize: (textView.font?.pointSize)!)
+//        placeholderLabel.sizeToFit()
+//        textView.addSubview(placeholderLabel)
+//        placeholderLabel.frame.origin = CGPoint(x: 5, y: (textView.font?.pointSize)! / 2)
+//        placeholderLabel.textColor = UIColor.lightGray
+//        placeholderLabel.isHidden = !textView.text.isEmpty
+//    }
+//
+//    func textViewDidChange(_ textView: UITextView) {
+//        placeholderLabel.isHidden = !textView.text.isEmpty
+//    }
+//}
+
 
