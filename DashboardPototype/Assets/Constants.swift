@@ -15,6 +15,7 @@ class Constants {
     static let historyServiceUrl = "http://localhost:9000/e-xam/api/exam/history"
     static let loginServiceUrl = "http://192.168.109.207:9999/auth"
     static let profileServiceUrl = "http://192.168.109.195:1001/api/user/profileInfo"
+    static let kpiServiceUrl = "http://localhost:8081/kpi/user/latest"
 }
 
 //real

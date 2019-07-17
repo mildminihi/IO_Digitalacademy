@@ -34,6 +34,8 @@
 		7A76181D22C10D910078FE38 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A76181C22C10D910078FE38 /* DashBoardViewController.swift */; };
 		7A76182022C10D910078FE38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A76181E22C10D910078FE38 /* Main.storyboard */; };
 		7A76182522C10D920078FE38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A76182322C10D920078FE38 /* LaunchScreen.storyboard */; };
+		7AA0D04222DED6C6001F0971 /* KPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA0D04122DED6C6001F0971 /* KPIResponse.swift */; };
+		7AA0D04422DED72D001F0971 /* KPIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA0D04322DED72D001F0971 /* KPIServices.swift */; };
 		7AEBAEFD22C1B2DD006309CB /* ExamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEBAEFC22C1B2DD006309CB /* ExamCollectionViewCell.swift */; };
 		7AEBAEFF22C1BA02006309CB /* ExamRecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEBAEFE22C1BA02006309CB /* ExamRecommendCollectionViewCell.swift */; };
 		7AFDEC3622CC48EB00457B0A /* MostDoExamServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDEC3522CC48EB00457B0A /* MostDoExamServices.swift */; };
@@ -76,6 +78,8 @@
 		7A76181F22C10D910078FE38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7A76182422C10D920078FE38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A76182622C10D920078FE38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7AA0D04122DED6C6001F0971 /* KPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPIResponse.swift; sourceTree = "<group>"; };
+		7AA0D04322DED72D001F0971 /* KPIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPIServices.swift; sourceTree = "<group>"; };
 		7AEBAEFC22C1B2DD006309CB /* ExamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCollectionViewCell.swift; sourceTree = "<group>"; };
 		7AEBAEFE22C1BA02006309CB /* ExamRecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamRecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		7AFDEC3522CC48EB00457B0A /* MostDoExamServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostDoExamServices.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 				7A17E2E322CB26AE00198181 /* MostDoExamResponse.swift */,
 				7AFDEC3722CE0FCA00457B0A /* RecentExamResponse.swift */,
 				7A26545922D4920C00D47D98 /* HistoryResponse.swift */,
+				7AA0D04122DED6C6001F0971 /* KPIResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 				7AFDEC3522CC48EB00457B0A /* MostDoExamServices.swift */,
 				7AFDEC3922CE103600457B0A /* RecentExamServies.swift */,
 				7A26545B22D492B100D47D98 /* HistoryServices.swift */,
+				7AA0D04322DED72D001F0971 /* KPIServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -343,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AA0D04422DED72D001F0971 /* KPIServices.swift in Sources */,
 				F9953F6A22C5BA8000BB93AA /* ScoreHistoryViewController.swift in Sources */,
 				7A26545A22D4920C00D47D98 /* HistoryResponse.swift in Sources */,
 				F9CD9E9022C5C37C000F47AD /* ScoreHistoryTableViewCell.swift in Sources */,
@@ -353,6 +360,7 @@
 				7A26546022D5E63300D47D98 /* Constants.swift in Sources */,
 				13D48D8622C5FF0F00EBA40B /* AuthLoginResponse.swift in Sources */,
 				13D48D8622C5FF0F00EBA40B /* AuthLoginResponse.swift in Sources */,
+				7AA0D04222DED6C6001F0971 /* KPIResponse.swift in Sources */,
 				7AFDEC3A22CE103600457B0A /* RecentExamServies.swift in Sources */,
 				7AFDEC3822CE0FCA00457B0A /* RecentExamResponse.swift in Sources */,
 				687A7CFD22D49BFB004A6CBB /* EditProfileViewController.swift in Sources */,
