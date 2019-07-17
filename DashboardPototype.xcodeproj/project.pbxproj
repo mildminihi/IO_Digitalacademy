@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1375FC6522CF1F6800552F73 /* BridgingHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1375FC6422CF1F6800552F73 /* BridgingHeader.m */; };
 		1398C47F22DEDDE900F09BF8 /* TimeCounterServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1398C47E22DEDDE900F09BF8 /* TimeCounterServices.swift */; };
-		1398C48122DF274800F09BF8 /* AuthUnResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1398C48022DF274800F09BF8 /* AuthUnResponse.swift */; };
 		13D48D6922C5B28500EBA40B /* ExamLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D48D6822C5B28500EBA40B /* ExamLoginViewController.swift */; };
 		13D48D6B22C5B41000EBA40B /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13D48D6A22C5B41000EBA40B /* LoginStoryboard.storyboard */; };
 		13D48D6D22C5B45300EBA40B /* icon_scb.png in Resources */ = {isa = PBXBuildFile; fileRef = 13D48D6C22C5B45300EBA40B /* icon_scb.png */; };
@@ -52,7 +51,6 @@
 		1375FC6322CF1F6800552F73 /* DashboardPototype-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DashboardPototype-Bridging-Header.h"; sourceTree = "<group>"; };
 		1375FC6422CF1F6800552F73 /* BridgingHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BridgingHeader.m; sourceTree = "<group>"; };
 		1398C47E22DEDDE900F09BF8 /* TimeCounterServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCounterServices.swift; sourceTree = "<group>"; };
-		1398C48022DF274800F09BF8 /* AuthUnResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUnResponse.swift; sourceTree = "<group>"; };
 		13D48D6822C5B28500EBA40B /* ExamLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamLoginViewController.swift; sourceTree = "<group>"; };
 		13D48D6A22C5B41000EBA40B /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
 		13D48D6C22C5B45300EBA40B /* icon_scb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_scb.png; sourceTree = "<group>"; };
@@ -123,7 +121,6 @@
 				7A17E2E322CB26AE00198181 /* MostDoExamResponse.swift */,
 				7AFDEC3722CE0FCA00457B0A /* RecentExamResponse.swift */,
 				7A26545922D4920C00D47D98 /* HistoryResponse.swift */,
-				1398C48022DF274800F09BF8 /* AuthUnResponse.swift */,
 				7AA0D04122DED6C6001F0971 /* KPIResponse.swift */,
 			);
 			path = Models;
@@ -384,7 +381,6 @@
 				7A052A1222C44F2200F396B2 /* UserResponse.swift in Sources */,
 				7A76181B22C10D910078FE38 /* AppDelegate.swift in Sources */,
 				7A0A223D22C35F9600BABC9C /* ExamDetailViewController.swift in Sources */,
-				1398C48122DF274800F09BF8 /* AuthUnResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
