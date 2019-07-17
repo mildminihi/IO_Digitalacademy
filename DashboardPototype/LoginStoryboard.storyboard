@@ -41,6 +41,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="passwordField:" destination="cqR-gG-zdi" eventType="editingDidBegin" id="Cof-uM-Apk"/>
+                                    <action selector="passwordPlaceEnd:" destination="cqR-gG-zdi" eventType="editingDidEnd" id="nXH-zT-1dg"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7kW-Fp-P9v">

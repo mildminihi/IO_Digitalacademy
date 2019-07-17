@@ -1,8 +1,8 @@
 //
-//  HistoryServices.swift
+//  KPIServices.swift
 //  DashboardPototype
 //
-//  Created by Supanat Wanroj on 9/7/2562 BE.
+//  Created by Supanat Wanroj on 17/7/2562 BE.
 //  Copyright © 2562 Supanat Wanroj. All rights reserved.
 //
 
@@ -10,21 +10,21 @@ import Foundation
 import UIKit
 import Alamofire
 
-class HistoryServices: UIViewController {
+class KPIServices: UIViewController {
     
-    func getHistoryService(completion: @escaping ([HistoryResponse]) -> Void) {
+    func getKPIServices(completion: @escaping ([KPIResponse]) -> Void) {
         
-        var historyArray:[HistoryResponse] = []
-        let url = Constants.historyServiceUrl
+        var kpiArray:[KPIResponse] = []
+        let url = Constants.kpiServiceUrl
         let headers: HTTPHeaders = [
-            "token" : "1234"
+            "id" : "1"
         ]
         AF.request(url, method: .get, headers: headers).responseJSON { response in
             switch response.result {
             case .success:
                 do {
-                    let result = try JSONDecoder().decode(HistoryResponse.self, from: response.data!)
-                    historyArray = [result]
+                    let result = try JSONDecoder().decode(KPIResponse.self, from: response.data!)
+                    kpiArray = [result]
                     print(result)
                 }
                 catch {
@@ -33,7 +33,7 @@ class HistoryServices: UIViewController {
             case .failure(let error):
                 print("Network error: \(error.localizedDescription)")
             }
-            completion(historyArray)
+            completion(kpiArray)
         }
         
     }

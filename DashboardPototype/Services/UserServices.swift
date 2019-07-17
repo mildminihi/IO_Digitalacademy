@@ -24,6 +24,7 @@ class UserServices: UIViewController {
                     dataArray = [result.data]
                 }
                 catch {
+                    print(error.localizedDescription)
                 }
             case .failure(let error):
                 print("Network error: \(error.localizedDescription)")

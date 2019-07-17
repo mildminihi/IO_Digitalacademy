@@ -18,7 +18,7 @@ class EditProfileViewController: UIViewController {
     
     var mDataArray : [String:Any] = [:]
   
-    let mUrl = "http://localhost:1001/api/user/profileInfo"
+    let mUrl = Constants.profileServiceUrl
     
     
     var mRefresh: UIRefreshControl = UIRefreshControl()

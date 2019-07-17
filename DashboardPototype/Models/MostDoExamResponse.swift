@@ -32,5 +32,6 @@ struct HistoryMostDo: Codable {
 
 // MARK: - Status
 struct StatusMostExam: Codable {
-    let code, message: String
+    let code: Int
+    let message: String
 }

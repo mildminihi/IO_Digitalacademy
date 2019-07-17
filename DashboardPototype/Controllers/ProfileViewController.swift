@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController {
     
 //            let url = "http://192.168.110.91:9091/api/user/profileInfo"
     
-    let mUrl = "http://localhost:1001/api/user/profileInfo"
+    let mUrl = Constants.profileServiceUrl
 //    let mUrl = "http://192.168.109.211:8089/api/user/profileInfo"
     //    let mUrl = "http://192.168.109.211:8089/api/user/profileInfo"
 
@@ -42,22 +42,22 @@ class ProfileViewController: UIViewController {
     //                                       "religionEng": "Buddhist",
     //                                       "addressEng": "Some where on earth"]
     
-//    let mDataDict: [String:Any] = ["id": 2,
-//                                   "lastName_TH": "นันธิ",
-//                                   "firstName_TH": "ณัฐดนัย",
-//                                   "address": "5555555555 ",
-//                                   "position": "software engineer",
-//                                   "profilePhotoPath": "lnwza007.com",
-//                                   "birth_date": "1996-07-08",
-//                                   "registerDate": "2019-06-26T08:30:00.000+0000",
-//                                   "mobileNo": "0870760710",
-//                                   "email_notification_flag": "2",
-//                                   "lastName_EN": "Nunti",
-//                                   "firstName_EN": "Natdanai",
-//                                   "nationality": "ไทย",
-//                                   "religion": "ไทย",
-//                                   "email": "natdanai.nunti@gmail.com",
-//                                   "userId": 89614]
+    let mDataDict: [String:Any] = ["id": 2,
+                                   "lastName_TH": "นันธิ",
+                                   "firstName_TH": "ณัฐดนัย",
+                                   "address": "5555555555 ",
+                                   "position": "software engineer",
+                                   "profilePhotoPath": "lnwza007.com",
+                                   "birth_date": "1996-07-08",
+                                   "registerDate": "2019-06-26T08:30:00.000+0000",
+                                   "mobileNo": "0870760710",
+                                   "email_notification_flag": "2",
+                                   "lastName_EN": "Nunti",
+                                   "firstName_EN": "Natdanai",
+                                   "nationality": "ไทย",
+                                   "religion": "ไทย",
+                                   "email": "natdanai.nunti@gmail.com",
+                                   "userId": 89614]
     
     // [real key, Bueatyful key]
     let mKeyOrder: [[String]] = [["firstName_TH", "ชื่อ"],

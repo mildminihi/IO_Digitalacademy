@@ -18,7 +18,8 @@ class RecentExamServices: UIViewController {
         var recentExamArray:[RecentExamResponse] = []
         let url = Constants.recentExamServiceUrl
         let headers: HTTPHeaders = [
-            "token" : "1234"
+            "token" : "1234",
+            "id" : "1"
         ]
         AF.request(url, method: .get, headers: headers).responseJSON { response in
             print(response)
@@ -29,7 +30,7 @@ class RecentExamServices: UIViewController {
                     recentExamArray = [result]
                 }
                 catch {
-                    print("🍉")
+                    print(error.localizedDescription)
                 }
             case .failure(let error):
                 print("Network error: \(error.localizedDescription)")
