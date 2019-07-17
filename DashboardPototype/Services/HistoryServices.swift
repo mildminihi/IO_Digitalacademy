@@ -28,7 +28,7 @@ class HistoryServices: UIViewController {
                     print(result)
                 }
                 catch {
-                    print("🍉")
+                    print(error.localizedDescription)
                 }
             case .failure(let error):
                 print("Network error: \(error.localizedDescription)")
