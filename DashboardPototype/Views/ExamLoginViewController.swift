@@ -9,11 +9,15 @@ class ExamLoginViewController: UIViewController{
     @IBOutlet weak var loginButton: UIButton!
     
     var authLoginResponseArray: [AuthLoginResponse] = []
+    var authUnResponse: [AuthUnResponse] = []
     let url = URL(string: Constants.loginServiceUrl)!
     
-    var successCode: Int = 1000
-    var noDataCode: Int  = 1699
-    var wrongDataCode: Int  = 1599
+    var successCode: String = "1000"
+    var noDataCode: String  = "1699"
+    var wrongDataCode: String  = "1599"
+    var code: String = ""
+    
+    let timeCounter = TimeCounterServices.timeCounter
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +25,6 @@ class ExamLoginViewController: UIViewController{
         self.usernameField.center.x -= self.view.bounds.width
         self.passwordField.center.x -= self.view.bounds.width
         self.loginButton.center.x -= self.view.bounds.width
-//        self.textFieldDidBeginEditing(usernameField)
-//        self.textFieldShouldEndEditing(usernameField)
     }
     
     @objc func dismissKeyboard() {
@@ -56,6 +58,9 @@ class ExamLoginViewController: UIViewController{
             //btnLogin
             self.loginButton.center.x += self.view.bounds.width
         }, completion: nil)
+        
+        print("Login check")
+        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date)
     }
     
     func displayAnimate(){
@@ -79,7 +84,13 @@ class ExamLoginViewController: UIViewController{
             self.alertFromActionLogin(title: "No Information", msg: "Please fields username/password")
         } else {
             self.postData()
-            self.goToMain()
+//            if self.code == self.successCode{
+//                self.goToMain()
+//            }else if self.code == self.noDataCode{
+//                self.alertFromActionLogin(title: "Username is not registered", msg: "Please register")
+//            }else if self.code == self.wrongDataCode{
+//                self.alertFromActionLogin(title: "Wrong Username/Password", msg: "Please try again")
+//            }
         }
     }
     @IBAction func usernameField(_ sender: Any) {
@@ -107,20 +118,21 @@ class ExamLoginViewController: UIViewController{
                 do {
                     let result = try JSONDecoder().decode(AuthLoginResponse.self, from: response.data!)
                     self.authLoginResponseArray = [result]
-                    let code = (self.authLoginResponseArray[0].status.code)
-                    print(code)
-                    print(type(of: code))
-                    if code == self.successCode{
-                        UserDefaults.standard.setValue((self.authLoginResponseArray[0].data.accessToken), forKey: "token")
+                    self.code = (self.authLoginResponseArray[0].status.code)
+                    if self.code == self.successCode{
+                        UserDefaults.standard.setValue((self.authLoginResponseArray[0].data.accessToken), forKey: "access_token")
+                        UserDefaults.standard.setValue((self.authLoginResponseArray[0].data.refreshToken), forKey: "refresh_token")
                         UserDefaults.standard.setValue(self.usernameField.text!, forKey: "username")
-//                        print(UserDefaults.standard.string(forKey: "token"))
                         print("SUCCESS")
-                    }else if code == self.noDataCode{
-                        self.alertFromActionLogin(title: "Username is not registered", msg: "Please register")
-                    }else if code == self.wrongDataCode{
-                       self.alertFromActionLogin(title: "Wrong Username/Password", msg: "Please try again")
+                        self.timeCounter.tokenTimeCounter(date: Date(), hour: 1)
+                        self.goToMain()
+                    }else if self.code == self.noDataCode{
+                        return
+                    }else if self.code == self.wrongDataCode{
+                        print("ww")
                     }
                 } catch {
+                    self.alertFromActionLogin(title: "Wrong Username/Password", msg: "Please try again")
                     print(error.localizedDescription)
                 }
             case .failure(let error):
@@ -144,7 +156,6 @@ class ExamLoginViewController: UIViewController{
 }
 
 extension String {
-    
     func sha256() -> String{
         if let stringData = self.data(using: String.Encoding.utf8) {
             return hexStringFromData(input: digest(input: stringData as NSData))
@@ -170,29 +181,3 @@ extension String {
         return hexString
     }
 }
-
-//class NotesViewController : UIViewController, UITextViewDelegate {
-//
-//    @IBOutlet var textView : UITextView!
-//    var placeholderLabel : UILabel!
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        textView.delegate = self
-//        placeholderLabel = UILabel()
-//        placeholderLabel.text = "Enter some text..."
-//        placeholderLabel.font = UIFont.italicSystemFont(ofSize: (textView.font?.pointSize)!)
-//        placeholderLabel.sizeToFit()
-//        textView.addSubview(placeholderLabel)
-//        placeholderLabel.frame.origin = CGPoint(x: 5, y: (textView.font?.pointSize)! / 2)
-//        placeholderLabel.textColor = UIColor.lightGray
-//        placeholderLabel.isHidden = !textView.text.isEmpty
-//    }
-//
-//    func textViewDidChange(_ textView: UITextView) {
-//        placeholderLabel.isHidden = !textView.text.isEmpty
-//    }
-//}
-
-

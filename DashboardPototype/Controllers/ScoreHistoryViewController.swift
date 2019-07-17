@@ -11,6 +11,8 @@ import UIKit
 
 class ScoreHistoryViewController: UIViewController {
     
+    let timeCounter = TimeCounterServices.timeCounter
+    
     @IBOutlet weak var mTableView: UITableView!
 
     
@@ -54,5 +56,9 @@ extension ScoreHistoryViewController: UITableViewDelegate, UITableViewDataSource
         return 45
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        print("History check")
+        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date)
+    }
     
 }

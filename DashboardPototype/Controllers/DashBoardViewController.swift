@@ -31,10 +31,18 @@ class DashBoardViewController: UIViewController {
     var examImageArray = ["1", "2", "3", "4", "5"]
     var mostDoExamsArray: [HistoryMostDo] = []
     var recentExamArray: [LastDo] = []
+    
+    let timeCounter = TimeCounterServices.timeCounter
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUi()
         self.fetchData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("Dashboard check")
+        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date)
     }
     
     override func viewWillAppear(_ animated: Bool) {
