@@ -15,7 +15,21 @@ class ProfileViewController: UIViewController {
     
     
     
-    var mDataArray : [String:Any] = [:]
+    var mDataArray : [String:Any?] = ["last_name_en": nil,
+                                     "address": nil,
+                                     "religion": nil,
+                                     "mobile_no": nil,
+                                     "birth_date": nil,
+                                     "email_notification_flag": nil,
+                                     "nationality": nil,
+                                     "last_name_th": nil,
+                                     "first_name_en": nil,
+                                     "position": nil,
+                                     "profile_photo_path": nil,
+                                     "first_name_th": nil,
+                                     "register_date": nil,
+                                     "user_id": nil,
+                                     "email": nil]
     //    var mDataArray: DataClass = DataClass()
     
 //            let url = "http://192.168.110.91:9091/api/user/profileInfo"
@@ -26,7 +40,7 @@ class ProfileViewController: UIViewController {
 
     
     var mRefresh: UIRefreshControl = UIRefreshControl()
-    let headers: HTTPHeaders = ["token": "Bearer asdasd12"]
+    let headers: HTTPHeaders = ["id": "1"]
     
     
     
@@ -42,43 +56,46 @@ class ProfileViewController: UIViewController {
     //                                       "religionEng": "Buddhist",
     //                                       "addressEng": "Some where on earth"]
     
-    let mDataDict: [String:Any] = ["id": 2,
-                                   "lastName_TH": "นันธิ",
-                                   "firstName_TH": "ณัฐดนัย",
-                                   "address": "5555555555 ",
-                                   "position": "software engineer",
-                                   "profilePhotoPath": "lnwza007.com",
-                                   "birth_date": "1996-07-08",
-                                   "registerDate": "2019-06-26T08:30:00.000+0000",
-                                   "mobileNo": "0870760710",
-                                   "email_notification_flag": "2",
-                                   "lastName_EN": "Nunti",
-                                   "firstName_EN": "Natdanai",
-                                   "nationality": "ไทย",
-                                   "religion": "ไทย",
-                                   "email": "natdanai.nunti@gmail.com",
-                                   "userId": 89614]
+//    let mDataDict: [String:Any] = ["id": 2,
+//                                   "lastName_TH": "นันธิ",
+//                                   "firstName_TH": "ณัฐดนัย",
+//                                   "address": "5555555555 ",
+//                                   "position": "software engineer",
+//                                   "profilePhotoPath": "lnwza007.com",
+//                                   "birth_date": "1996-07-08",
+//                                   "registerDate": "2019-06-26T08:30:00.000+0000",
+//                                   "mobileNo": "0870760710",
+//                                   "email_notification_flag": "2",
+//                                   "lastName_EN": "Nunti",
+//                                   "firstName_EN": "Natdanai",
+//                                   "nationality": "ไทย",
+//                                   "religion": "ไทย",
+//                                   "email": "natdanai.nunti@gmail.com",
+//                                   "userId": 89614]
     
     // [real key, Bueatyful key]
-    let mKeyOrder: [[String]] = [["firstName_TH", "ชื่อ"],
-                                 ["lastName_TH", ""],
-                                 ["firstName_EN", "Full name"],
-                                 ["lastName_EN", ""],
+    let mKeyOrder: [[String]] = [["first_name_th", "ชื่อ"],
+                                 ["last_name_th", ""],
+                                 ["first_name_en", "Full name"],
+                                 ["last_name_en", ""],
                                  ["position", "Position"],
                                  ["birth_date", "Birth date"],
-                                 ["mobileNo", "Mobile No."],
+                                 ["mobile_no", "Mobile No."],
                                  ["email", "E-mail"],
                                  ["nationality", "Nationality"],
-                                 //                        ["raceEng"],
+                                 //["raceEng"],
                                  ["religion", "Religion"],
-        //                        ["religionEng"],
+                                 //["religionEng"],
                                  ["address", "Address"]]
+    
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mTableView.reloadData()
         self.feedData()
-//        self.setupRefresh()
+        self.setupRefresh()
         //        self.query()
         
         //        self.navigationItem.rightBarButtonItem = self.editButtonItem 
@@ -94,11 +111,30 @@ class ProfileViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(nav_to_edit_page))
     }
     
+//    override func viewDidDisappear(_ animated: Bool) {
+//        <#code#>
+//    }
+//
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let backItem = UIBarButtonItem(barButtonSystemItem: <#T##UIBarButtonItem.SystemItem#>, target: <#T##Any?#>, action: <#T##Selector?#>)
         let backItem = UIBarButtonItem()
+//        backItem.target = showLog()
+//        backItem.action = #selector(showLog)
         backItem.title = "Cancel"
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+        
+        if segue.identifier == "ToEditProfileViewController" {
+            let targetVC = segue.destination as! EditProfileViewController
+            targetVC.mDataArray = self.mDataArray
+        }
+        
     }
+    
+    
+//    @objc func showLog() -> UIViewController{
+//        print("Back btn callback??")
+//        return self
+//    }
     
 //        override func setEditing(_ editing: Bool, animated: Bool) {
 //            if self.navigationItem.rightBarButtonItem?.title == "Edit" {
@@ -129,17 +165,19 @@ class ProfileViewController: UIViewController {
     //    }
     
     @objc func nav_to_edit_page() {
-        let thisStoryboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+//        let thisStoryboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
 //        let newViewController = thisStoryboard.instantiateViewController(withIdentifier: "EditProfileViewController") as! EditProfileViewController
 //        self.present(newViewController, animated: true, completion: nil)
+        
+        
         self.performSegue(withIdentifier: "ToEditProfileViewController", sender: nil)
         
         
     }
     
     func setupRefresh(){
-        self.mRefresh.addTarget(self, action: #selector(feedData), for: .valueChanged)
-        self.mTableView.addSubview(self.mRefresh)
+        self.mRefresh.addTarget(self, action: #selector(self.feedData), for: .valueChanged)
+//        self.mTableView.addSubview(self.mRefresh)
     }
     
     @objc func feedData(){
@@ -222,12 +260,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
             //            cell.mFirstnameThVal.text = mDataDict["firstName_TH"] as? String
             //            cell.mLastnameThVal.text = mDataDict["lastName_TH"] as? String
             
-            if let first_name = self.mDataArray["firstName_EN"] as? String {
+            if let first_name = self.mDataArray["first_name_en"] as? String {
                 cell.mFirstnameEngVal.text = first_name as String
             } else {
                 cell.mFirstnameEngVal.text = "N/A"
             }
-            if let last_name = self.mDataArray["lastName_EN"] as? String {
+            if let last_name = self.mDataArray["last_name_en"] as? String {
                 cell.mLastnameEngVal.text = last_name as String
             } else {
                 cell.mLastnameEngVal.text = "N/A"
