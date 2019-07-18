@@ -18,8 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let secondVC = storyBoard.instantiateViewController(withIdentifier: "ExamLogin") as! ExamLoginViewController
         self.window?.rootViewController = secondVC
         
-        UserDefaults.standard.set("", forKey: "token")
+        UserDefaults.standard.set("", forKey: "access_token")
+        UserDefaults.standard.set("", forKey: "refresh_token")
         UserDefaults.standard.set("", forKey: "username")
+        UserDefaults.standard.set(Date(), forKey: "token_expire")
         
         return true
     }

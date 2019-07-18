@@ -11,6 +11,7 @@ import UIKit
 import Alamofire
 
 class EditProfileViewController: UIViewController {
+    let timeCounter = TimeCounterServices.timeCounter
     
     @IBOutlet weak var mTableView: UITableView!
     @IBOutlet weak var mPreviewImageview: UIImageView!
@@ -381,6 +382,10 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
 
+    override func viewDidAppear(_ animated: Bool) {
+        print("Edit Profile check")
+        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date)
+    }
 }
 
 

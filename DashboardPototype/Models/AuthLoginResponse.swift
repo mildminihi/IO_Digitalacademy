@@ -1,18 +1,13 @@
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let authLoginResponse = try? newJSONDecoder().decode(AuthLoginResponse.self, from: jsonData)
-
 import Foundation
 
 // MARK: - AuthLoginResponse
 struct AuthLoginResponse: Codable {
-    let status: AuthStatus
-    let data: AuthDataClass
+    let status: Status
+    let data: DataClass
 }
 
 // MARK: - DataClass
-struct AuthDataClass: Codable {
+struct DataClass: Codable {
     let accessToken, refreshToken: String
     
     enum CodingKeys: String, CodingKey {
@@ -22,7 +17,6 @@ struct AuthDataClass: Codable {
 }
 
 // MARK: - Status
-struct AuthStatus: Codable {
-    let code: Int
-    let message: String
+struct Status: Codable {
+    let code, message: String
 }

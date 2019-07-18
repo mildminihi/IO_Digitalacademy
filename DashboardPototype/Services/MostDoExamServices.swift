@@ -20,6 +20,7 @@ class MostDoExamServices: UIViewController {
             "token" : "1234"
         ]
         AF.request(url, method: .get, headers: headers).responseJSON { response in
+            print(response)
             switch response.result {
             case .success:
                 do {
@@ -27,6 +28,7 @@ class MostDoExamServices: UIViewController {
                     mostDoArray = [result]
                 }
                 catch {
+                    print(error.localizedDescription)
                 }
             case .failure(let error):
                 print("Network error: \(error.localizedDescription)")
