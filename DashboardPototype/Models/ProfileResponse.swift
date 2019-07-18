@@ -1,76 +1,3 @@
-//// This file was generated from JSON Schema using quicktype, do not modify it directly.
-//// To parse the JSON, add this file to your project and do:
-////
-////   let profileResponse = try? newJSONDecoder().decode(ProfileResponse.self, from: jsonData)
-//
-//import Foundation
-//
-//
-//// MARK: - ProfileResponse
-//struct ProfileResponse: Codable {
-//    //    let profiles: DataClass
-//    let status: ProfileStatus
-//    let data: ProfileDataClass
-//}
-//
-//// MARK: - DataClass
-//struct ProfileDataClass: Codable {
-//    let id: Int
-//    let lastNameTH, firstNameTH, address, position: String
-//    let profilePhotoPath, birthDate, registerDate, mobileNo: String
-//    let emailNotificationFlag, lastNameEN, firstNameEN, nationality: String
-//    let religion, email: String
-//    let userID: Int
-//
-//    var dictionary: [String: Any] {
-//        return ["id": id,
-//                "lastName_TH": lastNameTH,
-//                "firstName_TH": firstNameTH,
-//                "address": address,
-//                "position": position,
-//                "profilePhotoPath": profilePhotoPath,
-//                "birth_date": birthDate,
-//                "registerDate": registerDate,
-//                "mobileNo": mobileNo,
-//                "email_notification_flag": emailNotificationFlag,
-//                "lastName_EN": lastNameEN,
-//                "firstName_EN": firstNameEN,
-//                "nationality": nationality,
-//                "religion": religion,
-//                "email": email,
-//                "userId": userID]
-//    }
-//
-//    var nsDictionary: NSDictionary {
-//        return dictionary as NSDictionary
-//    }
-//
-//    enum CodingKeys: String, CodingKey {
-//        case id
-//        case lastNameTH = "lastName_TH"
-//        case firstNameTH = "firstName_TH"
-//        case address, position, profilePhotoPath
-//        case birthDate = "birth_date"
-//        case registerDate, mobileNo
-//        case emailNotificationFlag = "email_notification_flag"
-//        case lastNameEN = "lastName_EN"
-//        case firstNameEN = "firstName_EN"
-//        case nationality, religion, email
-//        case userID = "userId"
-//    }
-//}
-//
-////// MARK: - Status
-//struct ProfileStatus: Codable {
-//    let code, message: String
-//}
-
-
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let profileResponse = try? newJSONDecoder().decode(ProfileResponse.self, from: jsonData)
-
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse the JSON, add this file to your project and do:
 //
@@ -86,39 +13,38 @@ struct ProfileResponse: Codable {
 
 // MARK: - DataClass
 struct ProfileDataClass: Codable {
-    let id: Int
+    let userID: Int
     let lastNameTh, firstNameTh, address, position: String
-    let profilePhotoPath: JSONNull?
+    let profilePhotoPath: String?
     let birthDate, registerDate, mobileNo, emailNotificationFlag: String
     let lastNameEn, firstNameEn, nationality, religion: String
     let email: String
-    let userID: Int
     
     var dictionary: [String: Any] {
-                return ["id": id,
-                        "lastName_TH": lastNameTh,
-                        "firstName_TH": firstNameTh,
-                        "address": address,
-                        "position": position,
-                        "profilePhotoPath": profilePhotoPath,
-                        "birth_date": birthDate,
-                        "registerDate": registerDate,
-                        "mobileNo": mobileNo,
-                        "email_notification_flag": emailNotificationFlag,
-                        "lastName_EN": lastNameEn,
-                        "firstName_EN": firstNameEn,
-                        "nationality": nationality,
-                        "religion": religion,
-                        "email": email,
-                        "userId": userID]
-            }
+        return ["last_name_th": lastNameTh,
+                "first_name_th": firstNameTh,
+                "address": address,
+                "position": position,
+                "profile_photo_path": profilePhotoPath,
+                "birth_date": birthDate,
+                "register_date": registerDate,
+                "mobile_no": mobileNo,
+                "email_notification_flag": emailNotificationFlag,
+                "last_name_en": lastNameEn,
+                "first_name_en": firstNameEn,
+                "nationality": nationality,
+                "religion": religion,
+                "email": email,
+                "user_id": userID]
+    }
     
-            var nsDictionary: NSDictionary {
-                return dictionary as NSDictionary
-            }
+    var nsDictionary: NSDictionary {
+        return dictionary as NSDictionary
+    }
+    
     
     enum CodingKeys: String, CodingKey {
-        case id
+        case userID = "user_id"
         case lastNameTh = "last_name_th"
         case firstNameTh = "first_name_th"
         case address, position
@@ -130,7 +56,6 @@ struct ProfileDataClass: Codable {
         case lastNameEn = "last_name_en"
         case firstNameEn = "first_name_en"
         case nationality, religion, email
-        case userID = "user_id"
     }
 }
 
@@ -166,3 +91,5 @@ class JSONNull: Codable, Hashable {
         try container.encodeNil()
     }
 }
+
+

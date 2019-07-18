@@ -14,5 +14,7 @@ class Constants {
     static let recentExamServiceUrl = "http://localhost:9000/api/exam/last_exam/1"
     static let historyServiceUrl = "http://localhost:9000/e-xam/api/exam/history"
     static let loginServiceUrl = "http://192.168.109.207:9999/auth"
-    static let profileServiceUrl = "http://localhost:1001/api/user/profileInfo"
+//    static let profileServiceUrl = "http://localhost:1001/api/user/profileInfo"
+    static let profileServiceUrl = "http://ec2-52-221-195-185.ap-southeast-1.compute.amazonaws.com:8089/api/user/profileInfo"
+    static let editProfileServiceUrl = "http://ec2-52-221-195-185.ap-southeast-1.compute.amazonaws.com:8089/api/user/editProfile"
 }

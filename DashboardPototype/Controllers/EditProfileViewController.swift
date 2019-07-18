@@ -14,28 +14,52 @@ class EditProfileViewController: UIViewController {
     
     @IBOutlet weak var mTableView: UITableView!
     @IBOutlet weak var mPreviewImageview: UIImageView!
+    var mFieldInTable: [UITextField] = []
+    var mCellIndices: [IndexPath] = []
+    
     var mIsProfileDataChange: Bool = false
     
     var mDataArray : [String:Any] = [:]
+    var mEditDataTmpArray : [String:Any] = [:]
     
-    
+    let mUrl = Constants.editProfileServiceUrl
     var mRefresh: UIRefreshControl = UIRefreshControl()
-    let headers: HTTPHeaders = ["token": "Bearer asdasd12"]
+    let headers: HTTPHeaders = ["id": "1"]
+    
+    var mSubmitSuccess: Bool? = nil
+    
+    
     
     // [real key, Bueatyful key]
-    let mKeyOrder: [[String]] = [["firstName_TH", "ชื่อ"],
-                                 ["lastName_TH", ""],
-                                 ["firstName_EN", "Full name"],
-                                 ["lastName_EN", ""],
+    let mKeyOrder: [[String]] = [["first_name_th", "ชื่อ"],
+                                 ["last_name_th", ""],
+                                 ["first_name_en", "Full name"],
+                                 ["last_name_en", ""],
                                  ["position", "Position"],
                                  ["birth_date", "Birth date"],
-                                 ["mobileNo", "Mobile No."],
+                                 ["mobile_no", "Mobile No."],
                                  ["email", "E-mail"],
                                  ["nationality", "Nationality"],
-//                               ["raceEng"],
+                                 //["raceEng"],
                                  ["religion", "Religion"],
-//                               ["religionEng"],
+                                 //["religionEng"],
                                  ["address", "Address"]]
+    
+    //    "first_name_th":"firstName_TH":"xyz",
+    //    "last_name_th":"lastName_TH":"zyx",
+//    "firstName_EN":"xyz",
+//    "lastName_EN":"zyx",
+//    "address":"mac",
+//    "position":"pc",
+//    "profilePhotoPath":"labtip/tablet/sm.png",
+//    "birth_date":"1998-10-2",
+//    "registerDate":"1998-10-2 17:20:9",
+//    "mobileNo":"0123456",
+//    "email_notification_flag":"22",
+//    "nationality":"as",
+//    "religion":"sa"
+    
+//    let mKeyMapper:[[String]] = [["first_name_th", "firstName_TH"]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,8 +86,48 @@ class EditProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @objc func submitProfileData(){
+        
+        print("parameters:", self.mDataArray)
+        
+        AF.request(self.mUrl, method: .put, parameters: self.mDataArray, headers: self.headers).responseJSON { (response) in
+            
+            print("raw res:", response)
+            
+            switch response.result{
+            case .success:
+                
+                do {
+                    let result = try JSONDecoder().decode(ProfileResponse.self, from: response.data!)
+                    print("Code: \(result.status.code)")
+                    print("Success!")
+                    
+                } catch {
+                    do {
+                        let result = try JSONDecoder().decode(ProfileErrorResponse.self, from: response.data!)
+                        print("Code: \(result.status.code)")
+                        print("Message: \(result.status.message)")
+                    } catch {
+                        print("unknow prase")
+                    }
+                }
+                
+                print("Submited profile data")
+                
+                self.mSubmitSuccess = true
+                
+            case .failure(let error):
+                print("network error: \(error.localizedDescription)")
+                
+                
+                self.mSubmitSuccess = false
+                
+            }
+        }
+    }
+    
     func setupNavBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(putProfileData))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(self.putProfileData))
         navigationItem.title = "Edit Profile"
         navigationItem.hidesBackButton = true
         
@@ -71,11 +135,12 @@ class EditProfileViewController: UIViewController {
     }
     
     @objc func backButtonTapped() {
-        let responseMsg: String = "Are you sure to discard changing profile?"
+        let responseMsg: String = "Are you sure to discard changing in profile?"
         if(self.mIsProfileDataChange){
-          self.showAlert(responseMsg: responseMsg)
+            self.showAlert(responseMsg: responseMsg)
         } else {
             self.navigationController?.popViewController(animated: true)
+//            self.navigationController?.
         }
         
         
@@ -92,44 +157,89 @@ class EditProfileViewController: UIViewController {
         self.present(alertVC, animated: true, completion: nil)
     }
     
-    
-    
-    func setupRefresh(){
-//        self.mRefresh.addTarget(self, action: #selector(feedData), for: .valueChanged)
-//        self.mTableView.addSubview(self.mRefresh)
+    func buildSubmitForm(){
+        for (key, value) in self.mEditDataTmpArray{
+            self.mDataArray[key] = value
+        }
+        
+        self.mDataArray.removeValue(forKey: "email")
+        self.mDataArray.removeValue(forKey: "user_id")
+        
     }
     
     @objc func putProfileData(){
         let message = "Submit Change"
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        
+        self.buildSubmitForm()
+        self.submitProfileData()
+        
         self.present(alert, animated: true)
-        
         let duration: Double = 1.5
-        
+
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) {
             alert.dismiss(animated: true)
-            self.navigationController?.popViewController(animated: true)
+            if let succes = self.mSubmitSuccess {
+                
+                if succes {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
         }
+    }
+    
+    @objc func datePickerFromValueChanged(sender:UIDatePicker) {
+        
+//        cell = self.mTableView.dequeueReusableCell(withIdentifier: "custom") as! EditProfileTableViewCell
+//
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        let dateStr: String = dateFormatter.string(from: sender.date)
+//
+//        self.mTableView.accessibilityElements.text = dateStr
+        
+//        self.mTableView.cellForRow(at: <#T##IndexPath#>)
+        
+        self.mFieldInTable[3].text = dateStr            // date row
         
         
     }
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
+    @IBAction func showDateScrollView(_ sender: UITextField){
+        if sender.accessibilityIdentifier == "birth_date" {
+            
+            
+            let datePickerView:UIDatePicker = UIDatePicker()
+            datePickerView.datePickerMode = UIDatePicker.Mode.date
+            sender.inputView = datePickerView
+//            self.mFieldInTable[3].inputView = datePickerView
+            datePickerView.addTarget(self, action: #selector(self.datePickerFromValueChanged), for: UIControl.Event.valueChanged)
+            
+            
+            
+            print("Call Date Scroll View")
+            
+        } else {
+            print("Don't call Date scroll view")
+        }
+    }
+    
+    @IBAction func profileAttrChanged(_ sender: UITextField) {
+//        self.mTableView.
+//        let cell = self.mTableView.dequeueReusableCell(withIdentifier: "firstName_EN")
+//        let cell = self.myTableView.dequeueReusableCell(withIdentifier: "manualAddC1")
+        print("sender:\(String(describing: sender.text))")
+        print("id:\(String(describing: sender.accessibilityIdentifier))")
+//        print("firstName_EN:\(String(describing: cell?.accessibilityElementCount()))")
+        let textFillId = String(sender.accessibilityIdentifier!)
+        let text = String(sender.text!)
+        self.mEditDataTmpArray[textFillId] = text
+    
+        
+        self.mIsProfileDataChange = true
         
     }
     
-    
-    @IBAction func firstnameChanged(_ sender: Any) {
-        self.mIsProfileDataChange = true
-    }
-    
-    @IBAction func lastNameChanged(_ sender: Any) {
-        self.mIsProfileDataChange = true
-    }
-    
-    @IBAction func valueChanged(_ sender: Any) {
-        self.mIsProfileDataChange = true
-    }
     
     /*
     // MARK: - Navigation
@@ -156,9 +266,34 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource{
         
         print("IndexPath: ", indexPath, " int: ", indexPath.item)
         
-        if indexPath.item > 0 {
-            let keyName: String! = self.mKeyOrder[indexPath.item + 3][0]
-            let bueatyKey: String! = self.mKeyOrder[indexPath.item + 3][1]
+        let keyName: String! = self.mKeyOrder[indexPath.item + 3][0]
+        let bueatyKey: String! = self.mKeyOrder[indexPath.item + 3][1]
+        
+        if indexPath.item == 0  {
+            cell = tableView.dequeueReusableCell(withIdentifier: "name section") as! EditProfileTableViewCell
+            //            cell.mFirstnameThVal.text = mDataDict["firstName_TH"] as? String
+            //            cell.mLastnameThVal.text = mDataDict["lastName_TH"] as? String
+            
+            if let first_name = self.mDataArray["first_name_en"] as? String {
+                cell.mFirstnameEngVal.text = first_name as String
+            } else {
+                cell.mFirstnameEngVal.text = ""
+            }
+            if let last_name = self.mDataArray["last_name_en"] as? String {
+                cell.mLastnameEngVal.text = last_name as String
+            } else {
+                cell.mLastnameEngVal.text = ""
+            }
+            cell.mFirstnameEngVal.accessibilityIdentifier = "first_name_en"
+            cell.mLastnameEngVal.accessibilityIdentifier = "last_name_en"
+            
+            self.mFieldInTable.append(cell.mFirstnameEngVal)
+            self.mFieldInTable.append(cell.mLastnameEngVal)
+            
+            
+            
+        } else {
+            
             
             cell = tableView.dequeueReusableCell(withIdentifier: "custom") as! EditProfileTableViewCell
             //        let item = self.mDataArray[indexPath.row]
@@ -171,25 +306,19 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource{
             } else {
                 cell.mValue.text = ""
             }
-            
-        } else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "name section") as! EditProfileTableViewCell
-            //            cell.mFirstnameThVal.text = mDataDict["firstName_TH"] as? String
-            //            cell.mLastnameThVal.text = mDataDict["lastName_TH"] as? String
-            
-            if let first_name = self.mDataArray["firstName_EN"] as? String {
-                cell.mFirstnameEngVal.text = first_name as String
-            } else {
-                cell.mFirstnameEngVal.text = ""
+            cell.mValue.accessibilityIdentifier = keyName
+            if keyName == "birth_date" {
+//                cell.mValue.addTarget(self, action: #selector(respondsToTf), for: .touchDown)
             }
-            if let last_name = self.mDataArray["lastName_EN"] as? String {
-                cell.mLastnameEngVal.text = last_name as String
-            } else {
-                cell.mLastnameEngVal.text = ""
-            }
+            
+            self.mFieldInTable.append(cell.mValue)
+            
         }
+        self.mCellIndices.append(indexPath)
         return cell
     }
+    
+
 }
 
 

@@ -255,7 +255,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="firstnameChanged:" destination="KP1-b0-qdf" eventType="editingChanged" id="Laz-bZ-3Kt"/>
+                                                        <action selector="profileAttrChanged:" destination="KP1-b0-qdf" eventType="editingChanged" id="f9l-WD-G3A"/>
                                                     </connections>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bf8-Po-aDv">
@@ -268,7 +268,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="lastNameChanged:" destination="KP1-b0-qdf" eventType="editingChanged" id="vrB-9s-FQH"/>
+                                                        <action selector="profileAttrChanged:" destination="KP1-b0-qdf" eventType="editingChanged" id="wnn-h5-hyq"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -316,7 +316,8 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="valueChanged:" destination="KP1-b0-qdf" eventType="editingChanged" id="OyN-KZ-5AG"/>
+                                                        <action selector="profileAttrChanged:" destination="KP1-b0-qdf" eventType="editingChanged" id="3cW-n2-fGM"/>
+                                                        <action selector="showDateScrollView:" destination="KP1-b0-qdf" eventType="editingDidBegin" id="Ty4-Wa-8y9"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
