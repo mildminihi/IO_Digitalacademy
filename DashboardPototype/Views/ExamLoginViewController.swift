@@ -126,10 +126,6 @@ class ExamLoginViewController: UIViewController{
                         print("SUCCESS")
                         self.timeCounter.tokenTimeCounter(date: Date(), hour: 1)
                         self.goToMain()
-                    }else if self.code == self.noDataCode{
-                        return
-                    }else if self.code == self.wrongDataCode{
-                        print("ww")
                     }
                 } catch {
                     self.alertFromActionLogin(title: "Wrong Username/Password", msg: "Please try again")
