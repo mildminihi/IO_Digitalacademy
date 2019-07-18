@@ -9,7 +9,6 @@ class ExamLoginViewController: UIViewController{
     @IBOutlet weak var loginButton: UIButton!
     
     var authLoginResponseArray: [AuthLoginResponse] = []
-    var authUnResponse: [AuthUnResponse] = []
     let url = URL(string: Constants.loginServiceUrl)!
     
     var successCode: String = "1000"
@@ -22,9 +21,33 @@ class ExamLoginViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        observeKeyboardNotifications()
+        
         self.usernameField.center.x -= self.view.bounds.width
         self.passwordField.center.x -= self.view.bounds.width
         self.loginButton.center.x -= self.view.bounds.width
+    }
+    
+    fileprivate func observeKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+    
+    @objc func keyboardHide (_ notification: Notification) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            
+            self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+            
+        }, completion: nil)
+    }
+    
+    @objc func keyboardShow (_ notification: Notification) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            
+            self.view.frame = CGRect(x: 0, y: -100, width: self.view.frame.width, height: self.view.frame.height)
+            
+        }, completion: nil)
     }
     
     @objc func dismissKeyboard() {
@@ -126,10 +149,6 @@ class ExamLoginViewController: UIViewController{
                         print("SUCCESS")
                         self.timeCounter.tokenTimeCounter(date: Date(), hour: 1)
                         self.goToMain()
-                    }else if self.code == self.noDataCode{
-                        return
-                    }else if self.code == self.wrongDataCode{
-                        print("ww")
                     }
                 } catch {
                     self.alertFromActionLogin(title: "Wrong Username/Password", msg: "Please try again")
