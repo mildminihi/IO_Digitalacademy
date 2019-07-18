@@ -88,11 +88,7 @@ class ProfileViewController: UIViewController {
                                  //["religionEng"],
                                  ["address", "Address"]]
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-        self.feedData()
-        self.mTableView.reloadData()
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -300,6 +296,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
     override func viewDidAppear(_ animated: Bool) {
         print("Profile check")
         timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date)
+        self.feedData()
+        self.mTableView.reloadData()
     }
 }
 
