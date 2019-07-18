@@ -11,10 +11,10 @@ class ExamLoginViewController: UIViewController{
     var authLoginResponseArray: [AuthLoginResponse] = []
     let url = URL(string: Constants.loginServiceUrl)!
     
-    var successCode: String = "1000"
-    var noDataCode: String  = "1699"
-    var wrongDataCode: String  = "1599"
-    var code: String = ""
+    var successCode: Int = 1000
+    var noDataCode: Int  = 1699
+    var wrongDataCode: Int  = 1599
+    var code: Int = 0
     
     let timeCounter = TimeCounterServices.timeCounter
     
@@ -83,7 +83,7 @@ class ExamLoginViewController: UIViewController{
         }, completion: nil)
         
         print("Login check")
-        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date)
+        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date, view: self)
     }
     
     func displayAnimate(){
@@ -134,6 +134,7 @@ class ExamLoginViewController: UIViewController{
     
     func postData(){
         let body: [String: String] = ["username": usernameField.text!, "password": (passwordField.text!.sha256()).uppercased()]
+        print((passwordField.text!.sha256()).uppercased())
         AF.request(url, method: .post, parameters: body, encoding: JSONEncoding.default).responseJSON { (response) in
             switch response.result{
             case .success:
