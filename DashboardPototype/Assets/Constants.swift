@@ -17,4 +17,5 @@ class Constants {
 //    static let profileServiceUrl = "http://localhost:1001/api/user/profileInfo"
     static let profileServiceUrl = "http://ec2-52-221-195-185.ap-southeast-1.compute.amazonaws.com:8089/api/user/profileInfo"
     static let editProfileServiceUrl = "http://ec2-52-221-195-185.ap-southeast-1.compute.amazonaws.com:8089/api/user/editProfile"
+//    static let editProfileServiceUrl = "http://localhost:8080/json"
 }

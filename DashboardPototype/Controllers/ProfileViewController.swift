@@ -38,7 +38,7 @@ class ProfileViewController: UIViewController {
 
     
     var mRefresh: UIRefreshControl = UIRefreshControl()
-    let headers: HTTPHeaders = ["id": "1"]
+    let headers: HTTPHeaders = ["id": "191"]
     
     
     
@@ -87,12 +87,14 @@ class ProfileViewController: UIViewController {
                                  ["address", "Address"]]
     
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        self.feedData()
+        self.mTableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mTableView.reloadData()
-        self.feedData()
+//        self.mTableView.reloadData()
         self.setupRefresh()
         //        self.query()
         

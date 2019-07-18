@@ -24,7 +24,7 @@ class EditProfileViewController: UIViewController {
     
     let mUrl = Constants.editProfileServiceUrl
     var mRefresh: UIRefreshControl = UIRefreshControl()
-    let headers: HTTPHeaders = ["id": "1"]
+    let headers: HTTPHeaders = ["id": "191", "Content-Type":"application/json"]
     
     var mSubmitSuccess: Bool? = nil
     
@@ -38,12 +38,24 @@ class EditProfileViewController: UIViewController {
                                  ["position", "Position"],
                                  ["birth_date", "Birth date"],
                                  ["mobile_no", "Mobile No."],
-                                 ["email", "E-mail"],
+                                 //["email", "E-mail"],
                                  ["nationality", "Nationality"],
                                  //["raceEng"],
                                  ["religion", "Religion"],
                                  //["religionEng"],
                                  ["address", "Address"]]
+    
+    let mConstrain: [String:String] = ["first_name_th": "^\\S*$",
+                                       "last_name_th": "^\\S*$",
+                                       "first_name_en": "^\\w+$",
+                                       "last_name_en": "^\\w+$",
+                                       "position": "^\\w+$",
+                                       "birth_date": "^\\d{4}-\\d{2}-\\d{2}$",
+                                       "mobile_no": "^[+]?\\d+$",
+                                       "email": "^\\w+[@]\\w+[.]\\w+$",
+                                       "nationality": "^\\w+$",
+                                       "religion": "^\\w+$",
+                                       "address": "^\\w+$"]
     
     //    "first_name_th":"firstName_TH":"xyz",
     //    "last_name_th":"lastName_TH":"zyx",
@@ -88,10 +100,21 @@ class EditProfileViewController: UIViewController {
     
     @objc func submitProfileData(){
         
+//        var parameters  = [:]
+        
+//        for (key, value) in self.mDataArray {
+//            parameters[key] = value as! String
+//        }
+        
         print("parameters:", self.mDataArray)
         
-        AF.request(self.mUrl, method: .put, parameters: self.mDataArray, headers: self.headers).responseJSON { (response) in
-            
+//        var request = URLRequest(url: self.mUrl)
+        
+        
+        AF.request(self.mUrl, method: .put, parameters: self.mDataArray, encoding: JSONEncoding.default, headers: self.headers ).responseJSON { (response) in
+        
+//        AF.request(self.mUrl, method: .put, parameters: self.mDataArray, headers: self.headers, encoding: .JSON).responseJSON { (response) in
+        
             print("raw res:", response)
             
             switch response.result{
@@ -157,6 +180,23 @@ class EditProfileViewController: UIViewController {
         self.present(alertVC, animated: true, completion: nil)
     }
     
+    func isProfileValid() -> Bool {
+        var profileValid: Bool = true
+        
+        for (key, value) in self.mEditDataTmpArray{
+            let strValue: String = value as! String
+            if let range = strValue.range(of: self.mConstrain[key] as! String,
+                                          options: .regularExpression) {
+                
+            } else {
+                profileValid = false
+            }
+        
+        }
+        
+        return profileValid
+    }
+    
     func buildSubmitForm(){
         for (key, value) in self.mEditDataTmpArray{
             self.mDataArray[key] = value
@@ -164,10 +204,14 @@ class EditProfileViewController: UIViewController {
         
         self.mDataArray.removeValue(forKey: "email")
         self.mDataArray.removeValue(forKey: "user_id")
+        self.mDataArray.removeValue(forKey: "register_date")
+        self.mDataArray.removeValue(forKey: "email_notification_flag")
+        
         
     }
     
     @objc func putProfileData(){
+        
         let message = "Submit Change"
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         
@@ -193,28 +237,44 @@ class EditProfileViewController: UIViewController {
 //        cell = self.mTableView.dequeueReusableCell(withIdentifier: "custom") as! EditProfileTableViewCell
 //
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        
         let dateStr: String = dateFormatter.string(from: sender.date)
 //
 //        self.mTableView.accessibilityElements.text = dateStr
         
 //        self.mTableView.cellForRow(at: <#T##IndexPath#>)
         
-        self.mFieldInTable[3].text = dateStr            // date row
         
-        self.mIsProfileDataChange = true          
+        self.mFieldInTable[3].text = dateStr            // date row
+        let textFillId = String(self.mFieldInTable[3].accessibilityIdentifier!)
+        let text = String(self.mFieldInTable[3].text!)
+        
+        self.mEditDataTmpArray[textFillId] = text
+        self.mIsProfileDataChange = true
         
         
     }
+    
     
     @IBAction func showDateScrollView(_ sender: UITextField){
         if sender.accessibilityIdentifier == "birth_date" {
             
             
             let datePickerView:UIDatePicker = UIDatePicker()
+            let dateFormatter = DateFormatter()
             datePickerView.datePickerMode = UIDatePicker.Mode.date
-            sender.inputView = datePickerView
+            
 //            self.mFieldInTable[3].inputView = datePickerView
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            
+            if let date = dateFormatter.date(from: self.mFieldInTable[3].text!) {
+                datePickerView.date = date
+            }
+            
+            sender.inputView = datePickerView
+            
             datePickerView.addTarget(self, action: #selector(self.datePickerFromValueChanged), for: UIControl.Event.valueChanged)
             
             
