@@ -202,6 +202,8 @@ class EditProfileViewController: UIViewController {
         
         self.mFieldInTable[3].text = dateStr            // date row
         
+        self.mIsProfileDataChange = true          
+        
         
     }
     
