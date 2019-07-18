@@ -32,6 +32,7 @@
 		7A26545A22D4920C00D47D98 /* HistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A26545922D4920C00D47D98 /* HistoryResponse.swift */; };
 		7A26545C22D492B100D47D98 /* HistoryServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A26545B22D492B100D47D98 /* HistoryServices.swift */; };
 		7A26546022D5E63300D47D98 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A26545F22D5E63300D47D98 /* Constants.swift */; };
+		7A4FE60F22E06DD700B4D56A /* LastLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4FE60E22E06DD700B4D56A /* LastLoginResponse.swift */; };
 		7A76181B22C10D910078FE38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A76181A22C10D910078FE38 /* AppDelegate.swift */; };
 		7A76181D22C10D910078FE38 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A76181C22C10D910078FE38 /* DashBoardViewController.swift */; };
 		7A76182022C10D910078FE38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A76181E22C10D910078FE38 /* Main.storyboard */; };
@@ -76,6 +77,7 @@
 		7A26545922D4920C00D47D98 /* HistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryResponse.swift; sourceTree = "<group>"; };
 		7A26545B22D492B100D47D98 /* HistoryServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryServices.swift; sourceTree = "<group>"; };
 		7A26545F22D5E63300D47D98 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7A4FE60E22E06DD700B4D56A /* LastLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastLoginResponse.swift; sourceTree = "<group>"; };
 		7A76181722C10D910078FE38 /* DashboardPototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DashboardPototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A76181A22C10D910078FE38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A76181C22C10D910078FE38 /* DashBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
@@ -123,11 +125,9 @@
 				7A17E2E322CB26AE00198181 /* MostDoExamResponse.swift */,
 				7AFDEC3722CE0FCA00457B0A /* RecentExamResponse.swift */,
 				7A26545922D4920C00D47D98 /* HistoryResponse.swift */,
-
 				68F386FB22DC88E400B55033 /* ProfileErrorResponse.swift */,
-
 				7AA0D04122DED6C6001F0971 /* KPIResponse.swift */,
-
+				7A4FE60E22E06DD700B4D56A /* LastLoginResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -386,6 +386,7 @@
 				6850774422C5EB2B0099900F /* ProfileTableViewCell.swift in Sources */,
 				7A052A1222C44F2200F396B2 /* UserResponse.swift in Sources */,
 				7A76181B22C10D910078FE38 /* AppDelegate.swift in Sources */,
+				7A4FE60F22E06DD700B4D56A /* LastLoginResponse.swift in Sources */,
 				7A0A223D22C35F9600BABC9C /* ExamDetailViewController.swift in Sources */,
 				68F386FC22DC88E400B55033 /* ProfileErrorResponse.swift in Sources */,
 			);

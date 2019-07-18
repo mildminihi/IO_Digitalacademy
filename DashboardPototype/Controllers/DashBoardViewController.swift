@@ -9,6 +9,7 @@ import UIKit
 
 class DashBoardViewController: UIViewController {
     
+    @IBOutlet weak var labelLastLogin: UILabel!
     @IBOutlet weak var labelEmail: UILabel!
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var imageProfile: UIImageView!
@@ -130,6 +131,15 @@ extension DashBoardViewController {
             self.feedRecentExam()
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
+            self.feedLastLogin()
+        }
+    }
+    
+    func feedLastLogin() {
+        UserServices().self.getLastLoginService { (lastLogin) in
+            let index = lastLogin.index(lastLogin.startIndex, offsetBy: 10)
+            let mySubstring = lastLogin[..<index] // Hello
+            self.labelLastLogin.text = String(mySubstring)
         }
     }
     
@@ -139,8 +149,8 @@ extension DashBoardViewController {
                 self.alertWithOneOption(title: "Cannot connect to server!", msg: nil, option: "OK")
             }
             else {
-                self.labelName.text = "\(dataArray[0].firstNameEN) \(dataArray[0].lastNameEN)"
-                self.labelEmail.text = dataArray[0].email
+                self.labelName.text = "\(dataArray[0].data.firstNameEn) \(dataArray[0].data.lastNameEn)"
+                self.labelEmail.text = dataArray[0].data.email
             }
         }
     }
