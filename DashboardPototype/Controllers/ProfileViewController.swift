@@ -40,7 +40,7 @@ class ProfileViewController: UIViewController {
 
     
     var mRefresh: UIRefreshControl = UIRefreshControl()
-    let headers: HTTPHeaders = ["id": "5"]
+    let headers: HTTPHeaders = ["accessToken": "Bearer \(UserDefaults.standard.string(forKey: "access_token").unsafelyUnwrapped)"]
     
     
     

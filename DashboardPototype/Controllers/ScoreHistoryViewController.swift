@@ -39,7 +39,7 @@ extension ScoreHistoryViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "score") as! ScoreHistoryTableViewCell
         
-        cell.labelScore.text = "\(self.historyArray[indexPath.row].pointUser)/\(self.historyArray[indexPath.row].pointExam)"
+        cell.labelScore.text = "\(self.historyArray[indexPath.row].pointExam)/\(self.historyArray[indexPath.row].examTotalScore)"
         cell.labelExamTitle.text = self.historyArray[indexPath.row].examName
         cell.labelDate.text = "\(self.historyArray[indexPath.row].timestamp)"
         

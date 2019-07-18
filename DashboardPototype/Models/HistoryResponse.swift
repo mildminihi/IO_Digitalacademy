@@ -1,10 +1,7 @@
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
 //
-//  HistoryResponse.swift
-//  DashboardPototype
-//
-//  Created by Supanat Wanroj on 9/7/2562 BE.
-//  Copyright © 2562 Supanat Wanroj. All rights reserved.
-//
+//   let historyResponse = try? newJSONDecoder().decode(HistoryResponse.self, from: jsonData)
 
 import Foundation
 
@@ -27,12 +24,13 @@ struct HistoryDataClass: Codable {
 struct AllHistory: Codable {
     let examID: Int
     let examName: String
-    let pointUser, pointExam, timestamp: Int
+    let examTotalScore, pointExam: Int
+    let timestamp: String
     
     enum CodingKeys: String, CodingKey {
         case examID = "exam_id"
         case examName = "exam_name"
-        case pointUser = "point_user"
+        case examTotalScore = "exam_total_score"
         case pointExam = "point_exam"
         case timestamp
     }
@@ -40,5 +38,6 @@ struct AllHistory: Codable {
 
 // MARK: - Status
 struct HistoryStatus: Codable {
-    let code, message: String
+    let code: Int
+    let message: String
 }

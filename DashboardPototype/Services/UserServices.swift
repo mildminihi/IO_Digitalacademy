@@ -16,7 +16,9 @@ class UserServices: UIViewController {
         
         var dataArray: [ProfileResponse] = []
         let url = Constants.profileServiceUrl
-        let headers: HTTPHeaders = ["id": "5"]
+        let headers: HTTPHeaders = [
+            "accessToken" : "Bearer \(UserDefaults.standard.string(forKey: "access_token").unsafelyUnwrapped)"
+        ]
         AF.request(url, method: .get, headers: headers).responseJSON { response in
             switch response.result {
             case .success:

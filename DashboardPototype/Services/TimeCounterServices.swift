@@ -12,7 +12,7 @@ class TimeCounterServices {
     
     private init() { }
     
-    func tokenTimeCounter(date: Date,hour: Int){
+    func tokenTimeCounter(date: Date, hour: Int){
         let startDate = date
         print(startDate)
         //        let expireDate = startDate.addingTimeInterval(TimeInterval(hour * 3600))
