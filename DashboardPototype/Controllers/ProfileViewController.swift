@@ -297,7 +297,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
 //    }
     override func viewDidAppear(_ animated: Bool) {
         print("Profile check")
-        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date)
+        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date, view: self)
     }
 }
 

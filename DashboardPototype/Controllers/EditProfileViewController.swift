@@ -324,7 +324,7 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource{
 
     override func viewDidAppear(_ animated: Bool) {
         print("Edit Profile check")
-        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date)
+        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date, view: self)
     }
 }
 
