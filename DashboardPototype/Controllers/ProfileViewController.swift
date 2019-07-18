@@ -6,6 +6,8 @@ import Alamofire
 
 class ProfileViewController: UIViewController {
     
+    let timeCounter = TimeCounterServices.timeCounter
+    
     @IBOutlet weak var mTableView: UITableView!
     @IBOutlet weak var mPreviewImageview: UIImageView!
     
@@ -293,5 +295,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
 //        //                print("Delete failure")
 //        //            }
 //    }
+    override func viewDidAppear(_ animated: Bool) {
+        print("Profile check")
+        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date)
+    }
 }
 

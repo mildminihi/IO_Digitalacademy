@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1375FC6522CF1F6800552F73 /* BridgingHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1375FC6422CF1F6800552F73 /* BridgingHeader.m */; };
+		1398C47F22DEDDE900F09BF8 /* TimeCounterServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1398C47E22DEDDE900F09BF8 /* TimeCounterServices.swift */; };
 		13D48D6922C5B28500EBA40B /* ExamLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D48D6822C5B28500EBA40B /* ExamLoginViewController.swift */; };
 		13D48D6B22C5B41000EBA40B /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13D48D6A22C5B41000EBA40B /* LoginStoryboard.storyboard */; };
 		13D48D6D22C5B45300EBA40B /* icon_scb.png in Resources */ = {isa = PBXBuildFile; fileRef = 13D48D6C22C5B45300EBA40B /* icon_scb.png */; };
@@ -35,6 +36,8 @@
 		7A76181D22C10D910078FE38 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A76181C22C10D910078FE38 /* DashBoardViewController.swift */; };
 		7A76182022C10D910078FE38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A76181E22C10D910078FE38 /* Main.storyboard */; };
 		7A76182522C10D920078FE38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A76182322C10D920078FE38 /* LaunchScreen.storyboard */; };
+		7AA0D04222DED6C6001F0971 /* KPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA0D04122DED6C6001F0971 /* KPIResponse.swift */; };
+		7AA0D04422DED72D001F0971 /* KPIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA0D04322DED72D001F0971 /* KPIServices.swift */; };
 		7AEBAEFD22C1B2DD006309CB /* ExamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEBAEFC22C1B2DD006309CB /* ExamCollectionViewCell.swift */; };
 		7AEBAEFF22C1BA02006309CB /* ExamRecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEBAEFE22C1BA02006309CB /* ExamRecommendCollectionViewCell.swift */; };
 		7AFDEC3622CC48EB00457B0A /* MostDoExamServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDEC3522CC48EB00457B0A /* MostDoExamServices.swift */; };
@@ -48,6 +51,7 @@
 		02A4B8EC2D7CA8B56F00ABA7 /* Pods-DashboardPototype.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DashboardPototype.release.xcconfig"; path = "Target Support Files/Pods-DashboardPototype/Pods-DashboardPototype.release.xcconfig"; sourceTree = "<group>"; };
 		1375FC6322CF1F6800552F73 /* DashboardPototype-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DashboardPototype-Bridging-Header.h"; sourceTree = "<group>"; };
 		1375FC6422CF1F6800552F73 /* BridgingHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BridgingHeader.m; sourceTree = "<group>"; };
+		1398C47E22DEDDE900F09BF8 /* TimeCounterServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCounterServices.swift; sourceTree = "<group>"; };
 		13D48D6822C5B28500EBA40B /* ExamLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamLoginViewController.swift; sourceTree = "<group>"; };
 		13D48D6A22C5B41000EBA40B /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
 		13D48D6C22C5B45300EBA40B /* icon_scb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_scb.png; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 		7A76181F22C10D910078FE38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7A76182422C10D920078FE38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A76182622C10D920078FE38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7AA0D04122DED6C6001F0971 /* KPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPIResponse.swift; sourceTree = "<group>"; };
+		7AA0D04322DED72D001F0971 /* KPIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPIServices.swift; sourceTree = "<group>"; };
 		7AEBAEFC22C1B2DD006309CB /* ExamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCollectionViewCell.swift; sourceTree = "<group>"; };
 		7AEBAEFE22C1BA02006309CB /* ExamRecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamRecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		7AFDEC3522CC48EB00457B0A /* MostDoExamServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostDoExamServices.swift; sourceTree = "<group>"; };
@@ -117,7 +123,11 @@
 				7A17E2E322CB26AE00198181 /* MostDoExamResponse.swift */,
 				7AFDEC3722CE0FCA00457B0A /* RecentExamResponse.swift */,
 				7A26545922D4920C00D47D98 /* HistoryResponse.swift */,
+
 				68F386FB22DC88E400B55033 /* ProfileErrorResponse.swift */,
+
+				7AA0D04122DED6C6001F0971 /* KPIResponse.swift */,
+
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -139,6 +149,8 @@
 				7AFDEC3522CC48EB00457B0A /* MostDoExamServices.swift */,
 				7AFDEC3922CE103600457B0A /* RecentExamServies.swift */,
 				7A26545B22D492B100D47D98 /* HistoryServices.swift */,
+				1398C47E22DEDDE900F09BF8 /* TimeCounterServices.swift */,
+				7AA0D04322DED72D001F0971 /* KPIServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -346,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AA0D04422DED72D001F0971 /* KPIServices.swift in Sources */,
 				F9953F6A22C5BA8000BB93AA /* ScoreHistoryViewController.swift in Sources */,
 				7A26545A22D4920C00D47D98 /* HistoryResponse.swift in Sources */,
 				F9CD9E9022C5C37C000F47AD /* ScoreHistoryTableViewCell.swift in Sources */,
@@ -356,6 +369,7 @@
 				7A26546022D5E63300D47D98 /* Constants.swift in Sources */,
 				13D48D8622C5FF0F00EBA40B /* AuthLoginResponse.swift in Sources */,
 				13D48D8622C5FF0F00EBA40B /* AuthLoginResponse.swift in Sources */,
+				7AA0D04222DED6C6001F0971 /* KPIResponse.swift in Sources */,
 				7AFDEC3A22CE103600457B0A /* RecentExamServies.swift in Sources */,
 				7AFDEC3822CE0FCA00457B0A /* RecentExamResponse.swift in Sources */,
 				687A7CFD22D49BFB004A6CBB /* EditProfileViewController.swift in Sources */,
@@ -367,6 +381,7 @@
 				6850774022C5E9A30099900F /* ProfileViewController.swift in Sources */,
 				13D48D6922C5B28500EBA40B /* ExamLoginViewController.swift in Sources */,
 				7AEBAEFD22C1B2DD006309CB /* ExamCollectionViewCell.swift in Sources */,
+				1398C47F22DEDDE900F09BF8 /* TimeCounterServices.swift in Sources */,
 				687A7CFF22D49EA0004A6CBB /* EditProfileTableViewCell.swift in Sources */,
 				6850774422C5EB2B0099900F /* ProfileTableViewCell.swift in Sources */,
 				7A052A1222C44F2200F396B2 /* UserResponse.swift in Sources */,

@@ -26,14 +26,23 @@ class DashBoardViewController: UIViewController {
     @IBOutlet weak var notHaveRecomLabel: UILabel!
     @IBOutlet weak var notHaveRecentView: UIView!
     @IBOutlet weak var notHaveRecomView: UIView!
+    @IBOutlet weak var kpiLable: UILabel!
     
     var examImageArray = ["1", "2", "3", "4", "5"]
     var mostDoExamsArray: [HistoryMostDo] = []
     var recentExamArray: [LastDo] = []
+    
+    let timeCounter = TimeCounterServices.timeCounter
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUi()
         self.fetchData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("Dashboard check")
+        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,6 +120,7 @@ extension DashBoardViewController {
         let delay = 1 // seconds
         self.activityIndicator.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
+            self.feedKPI()
             self.feedUserData()
             self.feedMostExamData()
             self.feedRecentExam()
@@ -167,6 +177,18 @@ extension DashBoardViewController {
                 self.examCollectView.reloadData()
             }
         }
+    }
+    
+    func feedKPI() {
+        KPIServices().self.getKPIServices { (kpi) in
+            if kpi.count == 0{
+                self.kpiLable.text = "😘"
+            }
+            else {
+                self.kpiLable.text = "\(kpi[0].data.finalRatingScore)"
+            }
+        }
+        
     }
 }
 
