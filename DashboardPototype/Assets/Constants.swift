@@ -16,7 +16,11 @@ class Constants {
     static let loginServiceUrl = "http://192.168.110.228:8083/api/auth"
     static let refreshTokenServiceUrl = "http://192.168.110.228:8083/api/auth/regen"
     static let profileServiceUrl = "http://192.168.109.195:1001/api/user/profileInfo"
+//    static let profileServiceUrl = "http://localhost:1001/api/user/profileInfo"
+    static let profileServiceUrl = "http://ec2-52-221-195-185.ap-southeast-1.compute.amazonaws.com:8089/api/user/profileInfo"
+    static let editProfileServiceUrl = "http://ec2-52-221-195-185.ap-southeast-1.compute.amazonaws.com:8089/api/user/editProfile"
     static let kpiServiceUrl = "http://localhost:8081/kpi/user/latest"
+
 }
 
 //real
