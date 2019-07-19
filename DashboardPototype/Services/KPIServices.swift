@@ -17,7 +17,7 @@ class KPIServices: UIViewController {
         var kpiArray:[KPIResponse] = []
         let url = Constants.kpiServiceUrl
         let headers: HTTPHeaders = [
-            "id" : "1"
+            "accessToken" : "Bearer \(UserDefaults.standard.string(forKey: "access_token").unsafelyUnwrapped)"
         ]
         AF.request(url, method: .get, headers: headers).responseJSON { response in
             switch response.result {

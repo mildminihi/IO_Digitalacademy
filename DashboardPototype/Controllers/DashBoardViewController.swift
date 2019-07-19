@@ -182,7 +182,7 @@ extension DashBoardViewController {
             }
             else {
                 self.recentExamArray = recentExam[0].data.lastDo
-                if self.mostDoExamsArray.count != 0{
+                if self.recentExamArray.count != 0{
                     self.isNotHaveRecentExam(flag: false)
                 }
                 else {

@@ -25,7 +25,10 @@ class EditProfileViewController: UIViewController {
     
     let mUrl = Constants.editProfileServiceUrl
     var mRefresh: UIRefreshControl = UIRefreshControl()
-    let headers: HTTPHeaders = ["id": "191", "Content-Type":"application/json"]
+    let headers: HTTPHeaders = [
+        "accessToken": "Bearer \(UserDefaults.standard.string(forKey: "access_token").unsafelyUnwrapped)",
+        "Content-Type":"application/json"
+    ]
     
     var mSubmitSuccess: Bool? = nil
     

@@ -24,8 +24,13 @@ class ScoreHistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         HistoryServices().self.getHistoryService { (historyData) in
-            self.historyArray = historyData[0].data.allHistory
-            self.mTableView.reloadData()
+            if historyData.count == 0 {
+                
+            }
+            else {
+                self.historyArray = historyData[0].data.allHistory
+                self.mTableView.reloadData()
+            }
         }
         
     }

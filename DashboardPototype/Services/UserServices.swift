@@ -42,7 +42,9 @@ class UserServices: UIViewController {
         
         var lastLogin:String = ""
         let url = Constants.lastLoginUrl
-        let headers: HTTPHeaders = ["id": "5"]
+        let headers: HTTPHeaders = [
+            "accessToken" : "Bearer \(UserDefaults.standard.string(forKey: "access_token").unsafelyUnwrapped)"
+        ]
         AF.request(url, method: .get, headers: headers).responseJSON { response in
             print("🥨\(response)")
             switch response.result {
