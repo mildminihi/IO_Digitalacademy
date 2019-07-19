@@ -9,6 +9,7 @@ import UIKit
 
 class DashBoardViewController: UIViewController {
     
+    @IBOutlet weak var labelLastLogin: UILabel!
     @IBOutlet weak var labelEmail: UILabel!
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var imageProfile: UIImageView!
@@ -42,7 +43,7 @@ class DashBoardViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         print("Dashboard check")
-        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date)
+        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date, view: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +54,10 @@ class DashBoardViewController: UIViewController {
         let alert = UIAlertController(title: "Are you sure you want to logout?", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Log out", style: .destructive, handler: { action in
             self.dismiss(animated: true, completion: nil)
+            UserDefaults.standard.set("", forKey: "access_token")
+            UserDefaults.standard.set("", forKey: "refresh_token")
+            UserDefaults.standard.set("", forKey: "username")
+            UserDefaults.standard.set(Date(), forKey: "token_expire")
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
@@ -126,6 +131,15 @@ extension DashBoardViewController {
             self.feedRecentExam()
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
+            self.feedLastLogin()
+        }
+    }
+    
+    func feedLastLogin() {
+        UserServices().self.getLastLoginService { (lastLogin) in
+            let index = lastLogin.index(lastLogin.startIndex, offsetBy: 10)
+            let mySubstring = lastLogin[..<index] // Hello
+            self.labelLastLogin.text = String(mySubstring)
         }
     }
     
@@ -135,8 +149,8 @@ extension DashBoardViewController {
                 self.alertWithOneOption(title: "Cannot connect to server!", msg: nil, option: "OK")
             }
             else {
-                self.labelName.text = "\(dataArray[0].firstNameEN) \(dataArray[0].lastNameEN)"
-                self.labelEmail.text = dataArray[0].email
+                self.labelName.text = "\(dataArray[0].data.firstNameEn) \(dataArray[0].data.lastNameEn)"
+                self.labelEmail.text = dataArray[0].data.email
             }
         }
     }

@@ -18,5 +18,6 @@ struct DataClass: Codable {
 
 // MARK: - Status
 struct Status: Codable {
-    let code, message: String
+    let code: Int
+    let message: String
 }

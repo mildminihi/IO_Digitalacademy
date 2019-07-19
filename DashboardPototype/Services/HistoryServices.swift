@@ -17,7 +17,7 @@ class HistoryServices: UIViewController {
         var historyArray:[HistoryResponse] = []
         let url = Constants.historyServiceUrl
         let headers: HTTPHeaders = [
-            "token" : "1234"
+            "accessToken" : "Bearer \(UserDefaults.standard.string(forKey: "access_token").unsafelyUnwrapped)"
         ]
         AF.request(url, method: .get, headers: headers).responseJSON { response in
             switch response.result {

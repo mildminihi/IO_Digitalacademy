@@ -40,7 +40,9 @@ class ProfileViewController: UIViewController {
 
     
     var mRefresh: UIRefreshControl = UIRefreshControl()
-    let headers: HTTPHeaders = ["id": "191"]
+
+    let headers: HTTPHeaders = ["accessToken": "Bearer \(UserDefaults.standard.string(forKey: "access_token").unsafelyUnwrapped)"]
+
     
     
     
@@ -295,9 +297,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
 //    }
     override func viewDidAppear(_ animated: Bool) {
         print("Profile check")
-        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date)
+
         self.feedData()
         self.mTableView.reloadData()
+
+        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date, view: self)
+
     }
 }
 

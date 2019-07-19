@@ -209,7 +209,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="25/06/62" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJn-Hw-xJd">
-                                        <rect key="frame" x="41" y="8" width="76" height="22"/>
+                                        <rect key="frame" x="8" y="8" width="141" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -335,6 +335,7 @@
                         <outlet property="kpiLable" destination="mux-VO-x4B" id="7rz-th-mIr"/>
                         <outlet property="kpiView" destination="8r8-eW-hny" id="rS9-Yg-njU"/>
                         <outlet property="labelEmail" destination="iVy-wq-e7h" id="bSF-GO-gPN"/>
+                        <outlet property="labelLastLogin" destination="RJn-Hw-xJd" id="JOM-mZ-1JX"/>
                         <outlet property="labelName" destination="Dp2-ZE-Isv" id="8fk-tK-gec"/>
                         <outlet property="notHaveRecentLabel" destination="AmL-fi-DL9" id="bGC-Y1-QZ1"/>
                         <outlet property="notHaveRecentView" destination="y3x-by-ZGB" id="tlq-ka-zAm"/>
