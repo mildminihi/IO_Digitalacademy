@@ -20,7 +20,7 @@ struct ProfileDataClass: Codable {
     let lastNameEn, firstNameEn, nationality, religion: String
     let email: String
     
-    var dictionary: [String: Any] {
+    var dictionary: [String: Any?] {
         return ["last_name_th": lastNameTh,
                 "first_name_th": firstNameTh,
                 "address": address,

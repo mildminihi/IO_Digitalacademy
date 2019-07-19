@@ -40,7 +40,9 @@ class ProfileViewController: UIViewController {
 
     
     var mRefresh: UIRefreshControl = UIRefreshControl()
+
     let headers: HTTPHeaders = ["accessToken": "Bearer \(UserDefaults.standard.string(forKey: "access_token").unsafelyUnwrapped)"]
+
     
     
     
@@ -88,13 +90,11 @@ class ProfileViewController: UIViewController {
                                  //["religionEng"],
                                  ["address", "Address"]]
     
-    
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mTableView.reloadData()
-        self.feedData()
+//        self.mTableView.reloadData()
         self.setupRefresh()
         //        self.query()
         
@@ -297,7 +297,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
 //    }
     override func viewDidAppear(_ animated: Bool) {
         print("Profile check")
+
+        self.feedData()
+        self.mTableView.reloadData()
+
         timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date, view: self)
+
     }
 }
 
