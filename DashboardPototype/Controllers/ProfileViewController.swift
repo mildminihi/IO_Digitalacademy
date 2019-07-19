@@ -126,6 +126,7 @@ class ProfileViewController: UIViewController {
         if segue.identifier == "ToEditProfileViewController" {
             let targetVC = segue.destination as! EditProfileViewController
             targetVC.mDataArray = self.mDataArray
+            targetVC.headers = self.headers
         }
         
     }
