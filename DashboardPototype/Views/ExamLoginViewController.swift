@@ -83,7 +83,7 @@ class ExamLoginViewController: UIViewController{
         }, completion: nil)
         
         print("Login check")
-        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date, view: self)
+//        timeCounter.checkTokenTime(dateNow: Date(), accessExpire: UserDefaults.standard.value(forKey: "access_token_expire") as! Date, refreshExpire: UserDefaults.standard.value(forKey: "refresh_token_expire") as! Date, view: self)
     }
     
     func displayAnimate(){
@@ -148,7 +148,8 @@ class ExamLoginViewController: UIViewController{
                         UserDefaults.standard.setValue((self.authLoginResponseArray[0].data.refreshToken), forKey: "refresh_token")
                         UserDefaults.standard.setValue(self.usernameField.text!, forKey: "username")
                         print("SUCCESS")
-                        self.timeCounter.tokenTimeCounter(date: Date(), hour: 1)
+                        self.timeCounter.tokenTimeCounter(date: Date(), min: 1, key: "access_token_expire")
+                        self.timeCounter.tokenTimeCounter(date: Date(), min: (1/2), key: "refresh_token_expire")
                         self.goToMain()
                     }
                 } catch {

@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.set("", forKey: "access_token")
         UserDefaults.standard.set("", forKey: "refresh_token")
         UserDefaults.standard.set("", forKey: "username")
-        UserDefaults.standard.set(Date(), forKey: "token_expire")
+        UserDefaults.standard.set(Date(), forKey: "access_token_expire")
+        UserDefaults.standard.set(Date(), forKey: "refresh_token_expire")
         
         return true
     }

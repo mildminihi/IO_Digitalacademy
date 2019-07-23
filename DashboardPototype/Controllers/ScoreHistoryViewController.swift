@@ -63,7 +63,7 @@ extension ScoreHistoryViewController: UITableViewDelegate, UITableViewDataSource
     
     override func viewDidAppear(_ animated: Bool) {
         print("History check")
-        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date, view: self)
+        timeCounter.checkTokenTime(dateNow: Date(), accessExpire: UserDefaults.standard.value(forKey: "access_token_expire") as! Date, refreshExpire: UserDefaults.standard.value(forKey: "refresh_token_expire") as! Date, view: self)
     }
     
 }

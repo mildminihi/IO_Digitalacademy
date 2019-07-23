@@ -301,8 +301,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
         self.feedData()
         self.mTableView.reloadData()
 
-        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date, view: self)
-
+        timeCounter.checkTokenTime(dateNow: Date(), accessExpire: UserDefaults.standard.value(forKey: "access_token_expire") as! Date, refreshExpire: UserDefaults.standard.value(forKey: "refresh_token_expire") as! Date, view: self)
     }
 }
 

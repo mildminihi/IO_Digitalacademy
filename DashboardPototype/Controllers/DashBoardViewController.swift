@@ -43,7 +43,7 @@ class DashBoardViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         print("Dashboard check")
-        timeCounter.checkTokenTime(dateNow: Date(), dateExpire: UserDefaults.standard.value(forKey: "token_expire") as! Date, view: self)
+        timeCounter.checkTokenTime(dateNow: Date(), accessExpire: UserDefaults.standard.value(forKey: "access_token_expire") as! Date, refreshExpire: UserDefaults.standard.value(forKey: "refresh_token_expire") as! Date, view: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -131,7 +131,7 @@ extension DashBoardViewController {
             self.feedRecentExam()
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
-            self.feedLastLogin()
+//            self.feedLastLogin()
         }
     }
     
